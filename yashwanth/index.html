@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yashwanth | Software Engineer & Systems Architect</title>
+  <meta name="description"
+    content="Professional software engineer portfolio with futuristic terminal aesthetic. Full-stack development, cloud infrastructure, distributed systems, and interactive CLI assistant.">
+  <meta name="keywords" content="Software Engineer, Full Stack Developer, Systems Architect, Yashwanth, Portfolio, Terminal, JavaScript, TypeScript, Python, Cloud">
+  <meta name="author" content="Yashwanth">
+
+  <!-- Futuristic Monospace & Technical Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Share+Tech+Mono&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="scanlines-enabled">
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main console [Enter]</a>
+
+  <!-- Subtle Ambient Matrix & Cyber Canvas Background -->
+  <canvas id="matrixCanvas" class="matrix-canvas" aria-hidden="true"></canvas>
+
+  <!-- CRT Scanline & Grid Effect Overlay -->
+  <div class="crt-scanlines" id="crtScanlines" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+
+  <!-- Top Global System Bar / Telemetry -->
+  <header class="sys-topbar" role="banner" aria-label="System status and controls">
+    <div class="sys-brand">
+      <div class="terminal-prompt-pill">
+        <span class="user-host">root@yashwanth-os</span>
+        <span class="prompt-sep">:</span>
+        <span class="prompt-path">~#</span>
+      </div>
+      <div class="sys-telemetry-badge" title="System Status: Fully Operational">
+        <span class="status-ping-dot"></span>
+        <span class="sys-status-text">SYS_ONLINE</span>
+        <span class="sys-ping-val">12ms</span>
+      </div>
+    </div>
+
+    <!-- Quick Terminal Controls (Sound, Scanlines, Matrix, Live Clock) -->
+    <div class="sys-actions-bar">
+      <!-- Live Terminal Clock -->
+      <div class="sys-clock" id="sysClock" title="Local System Clock">
+        <span class="clock-icon">🕒</span>
+        <span class="clock-display" id="clockDisplay">12:00:00 UTC</span>
+      </div>
+
+      <!-- Audio Synthesizer Toggle -->
+      <button id="soundToggleBtn" class="term-tool-btn" title="Toggle Terminal Keystroke & Audio SFX" aria-pressed="true" aria-label="Toggle Terminal Audio">
+        <span class="tool-icon" aria-hidden="true">🔊</span>
+        <span class="tool-label">AUDIO: ON</span>
+      </button>
+
+      <!-- CRT Scanline Toggle -->
+      <button id="crtToggleBtn" class="term-tool-btn" title="Toggle CRT Scanline Overlay" aria-pressed="true" aria-label="Toggle CRT Scanlines">
+        <span class="tool-icon" aria-hidden="true">⚡</span>
+        <span class="tool-label">CRT: ON</span>
+      </button>
+
+      <!-- Matrix Canvas Stream Toggle -->
+      <button id="matrixToggleBtn" class="term-tool-btn" title="Toggle Digital Rain Background" aria-pressed="true" aria-label="Toggle Matrix Stream">
+        <span class="tool-icon" aria-hidden="true">👾</span>
+        <span class="tool-label">MATRIX: ON</span>
+      </button>
+
+      <!-- Mobile Navigation Drawer Toggle -->
+      <button id="mobileNavToggle" class="mobile-menu-trigger" aria-label="Toggle Navigation Terminal" aria-expanded="false" aria-controls="mainNavbar">
+        <span class="terminal-hamb-bar"></span>
+        <span class="terminal-hamb-bar"></span>
+        <span class="terminal-hamb-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop Overlay -->
+  <div id="navBackdrop" class="terminal-backdrop" aria-hidden="true"></div>
+
+  <!-- Primary Futuristic Terminal Navigation Bar -->
+  <nav id="mainNavbar" class="terminal-navbar" aria-label="Main Navigation">
+    <div class="navbar-header">
+      <div class="profile-summary">
+        <div class="avatar-ring">
+          <!-- Real user photo with radar scanning border -->
+          <img src="WhatsApp Image 2026-10-07 at 12.37.15.jpeg" alt="Yashwanth Profile" class="avatar-img"
+            onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Yashwanth'">
+          <span class="avatar-status-beacon" title="Status: Online & Ready"></span>
+        </div>
+        <div class="profile-meta">
+          <div class="profile-name">YASHWANTH</div>
+          <div class="profile-role">SOFTWARE ENGINEER</div>
+          <div class="profile-location">
+            <span class="loc-dot"></span> BANGALORE, IN
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Items -->
+    <div class="nav-links-wrapper">
+      <div class="nav-category-header" aria-hidden="true">
+        <span>// NAVIGATION_DAEMON</span>
+      </div>
+
+      <ul class="nav-menu" role="menu">
+        <!-- 01. Home / Hero -->
+        <li class="nav-item" role="none">
+          <a href="#home" class="nav-link active" role="menuitem" data-section="home" aria-current="page">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">01.</span>
+            <span class="nav-label">BOOT_INTRO</span>
+            <span class="nav-shortcut">[H]</span>
+          </a>
+        </li>
+
+        <!-- 02. About -->
+        <li class="nav-item" role="none">
+          <a href="#about" class="nav-link" role="menuitem" data-section="about">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">02.</span>
+            <span class="nav-label">ABOUT_SYS</span>
+            <span class="nav-shortcut">[A]</span>
+          </a>
+        </li>
+
+        <!-- 03. Skills (Section 5) -->
+        <li class="nav-item" role="none">
+          <a href="#skills" class="nav-link" role="menuitem" data-section="skills">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">03.</span>
+            <span class="nav-label">TECH_STACK</span>
+            <span class="nav-shortcut">[S]</span>
+          </a>
+        </li>
+
+        <!-- 04. Career Timeline (Section 6) -->
+        <li class="nav-item" role="none">
+          <a href="#timeline" class="nav-link" role="menuitem" data-section="timeline">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">04.</span>
+            <span class="nav-label">CAREER_LOGS</span>
+            <span class="nav-shortcut">[T]</span>
+          </a>
+        </li>
+
+        <!-- 05. Projects (Section 7) -->
+        <li class="nav-item" role="none">
+          <a href="#projects" class="nav-link" role="menuitem" data-section="projects">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">05.</span>
+            <span class="nav-label">PROJECT_REPOS</span>
+            <span class="nav-shortcut">[P]</span>
+          </a>
+        </li>
+
+        <!-- 06. YouTube Video (Section 8) -->
+        <li class="nav-item" role="none">
+          <a href="#video-showcase" class="nav-link" role="menuitem" data-section="video-showcase">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">06.</span>
+            <span class="nav-label">WATCH_DEMO</span>
+            <span class="nav-shortcut">[V]</span>
+          </a>
+        </li>
+
+        <!-- 07. Testimonials (Section 9) -->
+        <li class="nav-item" role="none">
+          <a href="#testimonials" class="nav-link" role="menuitem" data-section="testimonials">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">07.</span>
+            <span class="nav-label">VERIFIED_LOGS</span>
+            <span class="nav-shortcut">[R]</span>
+          </a>
+        </li>
+
+        <!-- 08. AI Chat Interface (Section 10) -->
+        <li class="nav-item" role="none">
+          <a href="#ai-assistant" class="nav-link" role="menuitem" data-section="ai-assistant">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">08.</span>
+            <span class="nav-label">AI_ASSISTANT</span>
+            <span class="nav-tag hot-tag">AI</span>
+          </a>
+        </li>
+
+        <!-- 09. Contact -->
+        <li class="nav-item" role="none">
+          <a href="#contact" class="nav-link" role="menuitem" data-section="contact">
+            <span class="nav-prompt-prefix">&gt;</span>
+            <span class="nav-code">09.</span>
+            <span class="nav-label">DISPATCH_MSG</span>
+            <span class="nav-shortcut">[C]</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Quick Terminal Footer Status -->
+    <div class="navbar-footer">
+      <div class="env-info">
+        <span class="env-key">ENV:</span>
+        <span class="env-val">PRODUCTION_v2026.4</span>
+      </div>
+      <div class="quick-terminal-hint">
+        <span class="kbd-key">/</span> to focus AI prompt
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Shell -->
+  <main id="main-content" class="terminal-main">
+
+    <!-- ====================================================================
+         SECTION 1: HERO / BOOT TERMINAL (Neofetch & Interactive CLI Prompt)
+         ==================================================================== -->
+    <section id="home" class="terminal-section hero-section" aria-label="Hero terminal overview">
+      <div class="term-window hero-window">
+        <!-- Terminal Window Title Bar / Chrome Controls -->
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <span class="win-dot dot-close" title="Close Window"></span>
+            <span class="win-dot dot-minimize" title="Minimize Window"></span>
+            <span class="win-dot dot-maximize" title="Maximize Window"></span>
+          </div>
+          <div class="term-title-text">
+            <span class="term-title-user">yashwanth@workstation</span>
+            <span class="term-title-colon">:</span>
+            <span class="term-title-cmd">~/portfolio/bin$ ./boot_profile.sh --verbose</span>
+          </div>
+          <div class="term-meta-tag">
+            <span class="tag-pulse"></span> BASH // x86_64
+          </div>
+        </div>
+
+        <!-- Terminal Window Body -->
+        <div class="term-body hero-body">
+          <div class="terminal-intro-prompt">
+            <span class="term-prompt-line">
+              <span class="text-neon-green">guest@yashwanth-os</span>:<span class="text-cyan">~</span>$&nbsp;<span
+                class="command-input-sim">fastfetch --display-developer-profile</span>
+            </span>
+          </div>
+
+          <!-- Fastfetch / System Architecture Layout -->
+          <div class="fastfetch-grid">
+            <!-- Left Column: Biometric Cyber Photo & System Seal -->
+            <div class="fastfetch-avatar-card">
+              <div class="cyber-avatar-container">
+                <img src="WhatsApp Image 2026-10-07 at 12.37.15.jpeg" alt="Yashwanth portrait" class="cyber-avatar-img"
+                  onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Yashwanth'">
+                <div class="cyber-scan-overlay" aria-hidden="true"></div>
+                <div class="avatar-corner c-top-left" aria-hidden="true"></div>
+                <div class="avatar-corner c-top-right" aria-hidden="true"></div>
+                <div class="avatar-corner c-bottom-left" aria-hidden="true"></div>
+                <div class="avatar-corner c-bottom-right" aria-hidden="true"></div>
+              </div>
+              <div class="avatar-caption">
+                <span class="text-neon-green">STATUS:</span> OPERATIONAL<br>
+                <span class="text-cyan">SECURITY:</span> PGP VERIFIED
+              </div>
+            </div>
+
+            <!-- Right Column: Developer Specs & Dynamic Terminal Typewriter -->
+            <div class="fastfetch-details">
+              <div class="sys-ascii-badge" aria-hidden="true">
+                <span class="text-neon-green">YASHWANTH</span> <span class="text-cyan">//</span> <span
+                  class="text-dim">SYS_ARCHITECT_v2026</span>
+              </div>
+
+              <!-- Main Hero Name & Subheading -->
+              <h1 class="hero-main-title">
+                <span class="greeting-prefix">&gt; Hello World, I'm</span>
+                <span class="developer-name neon-text-cyan">Yashwanth</span>
+              </h1>
+
+              <!-- Dynamic Typewriter Line -->
+              <div class="dynamic-typing-container" aria-live="polite">
+                <span class="typing-prefix">&gt; Specialization: </span>
+                <span class="typewriter-text" id="typewriterText">Full-Stack Software Engineer</span>
+                <span class="term-cursor" aria-hidden="true">█</span>
+              </div>
+
+              <p class="hero-tagline-text">
+                Crafting robust distributed backends, resilient microservices, and pixel-precise, futuristic web
+                applications. Committed to clean architecture, algorithmic elegance, and high-performance computing.
+              </p>
+
+              <!-- Neofetch System Information Table -->
+              <div class="neofetch-table">
+                <div class="spec-row">
+                  <span class="spec-key"><span class="text-neon-green">OS</span>:</span>
+                  <span class="spec-val">Linux CyberKernel 6.12-lts / Arch x86_64</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key"><span class="text-cyan">ROLE</span>:</span>
+                  <span class="spec-val">Full-Stack Software Engineer & Distributed Systems Enthusiast</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key"><span class="text-neon-green">LANGUAGES</span>:</span>
+                  <span class="spec-val">TypeScript, Python, Go, C++, JavaScript (ESNext), SQL</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key"><span class="text-cyan">CORE STACK</span>:</span>
+                  <span class="spec-val">React, Next.js, Node.js, Express, Docker, AWS, PostgreSQL, Redis</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-key"><span class="text-neon-green">AVAILABILITY</span>:</span>
+                  <span class="spec-val status-highlight"><span class="pill-dot"></span> OPEN FOR SOFTWARE ENGINEERING ROLES</span>
+                </div>
+              </div>
+
+              <!-- Terminal Command Buttons -->
+              <div class="hero-cta-group">
+                <a href="#projects" class="term-btn btn-neon-green">
+                  <span class="btn-prompt">$</span>
+                  <span class="btn-text">./view-projects.sh</span>
+                  <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="#ai-assistant" class="term-btn btn-neon-cyan">
+                  <span class="btn-prompt">$</span>
+                  <span class="btn-text">./launch-ai-agent.exe</span>
+                  <span class="btn-arrow" aria-hidden="true">⚡</span>
+                </a>
+                <a href="#contact" class="term-btn btn-outline">
+                  <span class="btn-prompt">$</span>
+                  <span class="btn-text">./send-transmission</span>
+                  <span class="btn-arrow" aria-hidden="true">✉</span>
+                </a>
+                <a href="#resume" class="term-btn btn-ghost" id="viewResumeBtn" title="Download Yashwanth's Software Engineering CV">
+                  <span class="btn-prompt">$</span>
+                  <span class="btn-text">cat resume.pdf</span>
+                  <span class="btn-arrow" aria-hidden="true">⤓</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Status Bar -->
+        <div class="term-statusbar">
+          <div class="status-seg">
+            <span class="status-tag">NORMAL</span>
+            <span class="status-file">~/portfolio/index.html</span>
+          </div>
+          <div class="status-seg right-aligned">
+            <span>UTF-8</span>
+            <span>[READY]</span>
+            <span class="text-neon-green">100% HEALTH</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: ABOUT / SYSTEM ARCHITECTURE (System Overview & Principles)
+         ==================================================================== -->
+    <section id="about" class="terminal-section" aria-label="About the engineer">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 02. SYSTEM_OVERVIEW</div>
+        <h2 class="section-heading"><span class="text-cyan">$</span> cat about_engineer.md</h2>
+        <p class="section-subtext">Core engineering philosophy, computer science foundation, and development ethos.</p>
+      </div>
+
+      <div class="term-window">
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <span class="win-dot dot-close"></span>
+            <span class="win-dot dot-minimize"></span>
+            <span class="win-dot dot-maximize"></span>
+          </div>
+          <div class="term-title-text">user@yashwanth:~/bio/overview.md</div>
+          <div class="term-meta-tag">MARKDOWN // READ_ONLY</div>
+        </div>
+
+        <div class="term-body about-body">
+          <div class="about-grid">
+            <!-- Bio Summary Card -->
+            <div class="about-card terminal-subcard">
+              <div class="subcard-header">
+                <span class="subcard-icon">⚡</span>
+                <span class="subcard-title">ENGINEERING_PROFILE</span>
+              </div>
+              <p class="about-narrative">
+                I am a passionate software engineer with a deep fascination for distributed systems, microservices, and
+                intuitive high-performance user interfaces. I view software engineering not just as code execution, but
+                as the construction of reliable, fault-tolerant digital architectures.
+              </p>
+              <p class="about-narrative">
+                Whether deploying containerized microservices on AWS, optimizing database queries for sub-millisecond
+                retrieval, or crafting responsive web experiences with zero jank, I focus on scalable, maintainable, and
+                battle-tested solutions.
+              </p>
+              <div class="stat-pills-row">
+                <div class="stat-pill"><span class="pill-number">4+</span> <span class="pill-desc">Years Coding</span></div>
+                <div class="stat-pill"><span class="pill-number">25+</span> <span class="pill-desc">Repos Built</span></div>
+                <div class="stat-pill"><span class="pill-number">99.9%</span> <span class="pill-desc">Uptime Goal</span></div>
+              </div>
+            </div>
+
+            <!-- Core Architectural Pillars -->
+            <div class="about-card terminal-subcard">
+              <div class="subcard-header">
+                <span class="subcard-icon">🛡️</span>
+                <span class="subcard-title">ARCHITECTURAL_PILLARS</span>
+              </div>
+              <ul class="pillars-list">
+                <li class="pillar-item">
+                  <span class="pillar-bullet">&gt;</span>
+                  <div class="pillar-content">
+                    <strong class="text-neon-green">Performance & Scalability:</strong>
+                    <span>Sub-second latencies, horizontal scaling, asynchronous pipelines, and optimal algorithmic time complexities.</span>
+                  </div>
+                </li>
+                <li class="pillar-item">
+                  <span class="pillar-bullet">&gt;</span>
+                  <div class="pillar-content">
+                    <strong class="text-cyan">Zero-Trust & Security First:</strong>
+                    <span>Rigorous authentication, JWT/OAuth2 flows, encrypted data transports, and automated vulnerability scanning.</span>
+                  </div>
+                </li>
+                <li class="pillar-item">
+                  <span class="pillar-bullet">&gt;</span>
+                  <div class="pillar-content">
+                    <strong class="text-neon-green">Clean Modular Code:</strong>
+                    <span>SOLID principles, comprehensive test coverage (unit/integration), readable documentation, and CI/CD pipelines.</span>
+                  </div>
+                </li>
+                <li class="pillar-item">
+                  <span class="pillar-bullet">&gt;</span>
+                  <div class="pillar-content">
+                    <strong class="text-cyan">Accessible & Delightful UX:</strong>
+                    <span>WCAG AAA compliant interfaces, intuitive navigation, fast rendering, and thoughtful micro-interactions.</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 5: SKILLS SECTION
+         Requirements:
+         - Displaying programming languages, frameworks, databases, dev tools, and technical skills
+         - Present as terminal commands, code blocks, skill cards, or animated progress bars
+         - Neon text, glowing borders, terminal-style UI elements, subtle hover animations
+         - Comments in the code explaining how each element represents a specific skill
+         ==================================================================== -->
+    <section id="skills" class="terminal-section" aria-label="Technical skills and competencies">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 03. SKILLS_MATRIX</div>
+        <h2 class="section-heading"><span class="text-neon-green">$</span> ./list-skills.sh --all-categories --verbose</h2>
+        <p class="section-subtext">Verified technical competencies, runtime environments, databases, and DevOps tooling.</p>
+      </div>
+
+      <!-- Skills Terminal Window -->
+      <div class="term-window skills-window">
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <span class="win-dot dot-close"></span>
+            <span class="win-dot dot-minimize"></span>
+            <span class="win-dot dot-maximize"></span>
+          </div>
+          <div class="term-title-text">
+            <span>root@yashwanth:~# htop --skills --display=neon</span>
+          </div>
+          <div class="term-meta-tag">
+            <span>FILTER: [ALL_TECH]</span>
+          </div>
+        </div>
+
+        <div class="term-body skills-body">
+          <!-- Command Prompt Bar for Skills Navigation -->
+          <div class="skills-filter-cli" role="toolbar" aria-label="Skills filter buttons">
+            <span class="cli-label text-neon-green">$ filter-by:</span>
+            <button type="button" class="cli-filter-btn active" data-filter="all">[ALL]</button>
+            <button type="button" class="cli-filter-btn" data-filter="languages">[LANGUAGES]</button>
+            <button type="button" class="cli-filter-btn" data-filter="frameworks">[FRAMEWORKS]</button>
+            <button type="button" class="cli-filter-btn" data-filter="databases">[DATABASES]</button>
+            <button type="button" class="cli-filter-btn" data-filter="tools">[DEVOPS_TOOLS]</button>
+          </div>
+
+          <!-- Skills Grid Container -->
+          <div class="skills-grid" id="skillsGrid">
+
+            <!-- ==========================================================
+                 CATEGORY 1: PROGRAMMING LANGUAGES
+                 Each card represents an active programming language runtime,
+                 featuring terminal-style command invocation, proficiency rating,
+                 and an animated neon progress bar.
+                 ========================================================== -->
+
+            <!-- Skill Element: TypeScript
+                 Represents Yashwanth's core language for type-safe full-stack engineering.
+                 Proficiency: 95% (Production microservices, strict type systems, generics) -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-header">
+                <span class="skill-command">$ tsc --version</span>
+                <span class="skill-level-badge text-neon-green">95% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">&lt;/&gt;</span>
+                  <span class="skill-name">TypeScript</span>
+                </div>
+                <span class="skill-status-tag">[TYPE_SAFE]</span>
+              </div>
+              <p class="skill-desc">Generics, interfaces, strict compiler modes, AST manipulation, and full-stack enterprise typing.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="TypeScript proficiency: 95%">
+                <div class="skill-meter-fill fill-cyan" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: JavaScript (ES6+ / Node Runtime)
+                 Represents modern ECMAScript standard mastery including asynchronous event loop,
+                 Promises, DOM APIs, and Web Workers.
+                 Proficiency: 96% -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-header">
+                <span class="skill-command">$ node --eval</span>
+                <span class="skill-level-badge text-neon-green">96% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">JS</span>
+                  <span class="skill-name">JavaScript (ESNext)</span>
+                </div>
+                <span class="skill-status-tag">[EVENT_LOOP]</span>
+              </div>
+              <p class="skill-desc">Asynchronous programming, closures, prototypes, event loops, Web APIs, and high-performance algorithms.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript proficiency: 96%">
+                <div class="skill-meter-fill fill-green" style="width: 96%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: Python 3
+                 Represents server-side scripting, automation, API services (FastAPI),
+                 and data processing pipelines.
+                 Proficiency: 90% -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-header">
+                <span class="skill-command">$ python3 -m venv</span>
+                <span class="skill-level-badge text-neon-green">90% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">PY</span>
+                  <span class="skill-name">Python 3</span>
+                </div>
+                <span class="skill-status-tag">[BACKEND_AI]</span>
+              </div>
+              <p class="skill-desc">FastAPI, Django, Pandas, data parsing, automation scripting, and backend API integration.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Python proficiency: 90%">
+                <div class="skill-meter-fill fill-cyan" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: C++ & Algorithmic Foundations
+                 Represents low-level memory management, pointers, STL data structures,
+                 and algorithmic problem solving.
+                 Proficiency: 85% -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-header">
+                <span class="skill-command">$ g++ -std=c++20 -O3</span>
+                <span class="skill-level-badge text-neon-green">85% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">C++</span>
+                  <span class="skill-name">C++ / Algorithms</span>
+                </div>
+                <span class="skill-status-tag">[LOW_LEVEL]</span>
+              </div>
+              <p class="skill-desc">Memory management, pointers, STL data structures, graph traversals, and asymptotic optimization.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="C++ proficiency: 85%">
+                <div class="skill-meter-fill fill-green" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: Go (Golang)
+                 Represents concurrent microservices, goroutines, channels, and cloud-native services.
+                 Proficiency: 82% -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-header">
+                <span class="skill-command">$ go run main.go</span>
+                <span class="skill-level-badge text-neon-green">82% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">GO</span>
+                  <span class="skill-name">Go (Golang)</span>
+                </div>
+                <span class="skill-status-tag">[CONCURRENCY]</span>
+              </div>
+              <p class="skill-desc">Goroutines, channels, microservice handlers, lightweight CLI tools, and REST endpoints.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Go proficiency: 82%">
+                <div class="skill-meter-fill fill-cyan" style="width: 82%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: SQL & Database Querying
+                 Represents relational database modeling, complex joins, indexing, and query optimization.
+                 Proficiency: 92% -->
+            <div class="skill-card" data-category="languages">
+              <div class="skill-header">
+                <span class="skill-command">$ psql -U postgres</span>
+                <span class="skill-level-badge text-neon-green">92% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">SQL</span>
+                  <span class="skill-name">SQL & Data Models</span>
+                </div>
+                <span class="skill-status-tag">[RELATIONAL]</span>
+              </div>
+              <p class="skill-desc">Relational schemas, ACID transactions, complex joins, EXPLAIN ANALYZE, indexing, and partitioning.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="SQL proficiency: 92%">
+                <div class="skill-meter-fill fill-green" style="width: 92%;"></div>
+              </div>
+            </div>
+
+            <!-- ==========================================================
+                 CATEGORY 2: FRAMEWORKS & RUNTIMES
+                 Each element demonstrates frontend and backend architectural
+                 framework mastery.
+                 ========================================================== -->
+
+            <!-- Skill Element: React & Next.js
+                 Represents frontend architecture, Server-Side Rendering (SSR),
+                 Client Components, hooks, context, and hydration.
+                 Proficiency: 94% -->
+            <div class="skill-card" data-category="frameworks">
+              <div class="skill-header">
+                <span class="skill-command">$ npx create-next-app</span>
+                <span class="skill-level-badge text-neon-green">94% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">⚛️</span>
+                  <span class="skill-name">React & Next.js</span>
+                </div>
+                <span class="skill-status-tag">[SSR_HYBRID]</span>
+              </div>
+              <p class="skill-desc">App Router, Server Components, suspense boundaries, state management, and optimized hydration.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" aria-label="React and Next.js proficiency: 94%">
+                <div class="skill-meter-fill fill-cyan" style="width: 94%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: Node.js & Express.js
+                 Represents scalable event-driven backend APIs, middleware architecture,
+                 streams, and JWT authentication pipelines.
+                 Proficiency: 93% -->
+            <div class="skill-card" data-category="frameworks">
+              <div class="skill-header">
+                <span class="skill-command">$ npm run dev --backend</span>
+                <span class="skill-level-badge text-neon-green">93% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">🟢</span>
+                  <span class="skill-name">Node.js & Express</span>
+                </div>
+                <span class="skill-status-tag">[REST_APIS]</span>
+              </div>
+              <p class="skill-desc">RESTful microservices, asynchronous middleware, WebSocket gateways, rate limiting, and streams.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" aria-label="Node.js and Express proficiency: 93%">
+                <div class="skill-meter-fill fill-green" style="width: 93%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: CSS3, Animations & Responsive Design
+                 Represents modern layout grids, flexbox, CSS custom properties,
+                 hardware-accelerated GPU transforms, and scanline/neon effects.
+                 Proficiency: 95% -->
+            <div class="skill-card" data-category="frameworks">
+              <div class="skill-header">
+                <span class="skill-command">$ cat styles.css</span>
+                <span class="skill-level-badge text-neon-green">95% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">🎨</span>
+                  <span class="skill-name">CSS3 & Design Systems</span>
+                </div>
+                <span class="skill-status-tag">[GPU_ANIM]</span>
+              </div>
+              <p class="skill-desc">Responsive Grid/Flexbox, custom properties, glassmorphism, keyframe animations, and terminal themes.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="CSS3 proficiency: 95%">
+                <div class="skill-meter-fill fill-cyan" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <!-- ==========================================================
+                 CATEGORY 3: DATABASES & PERSISTENCE
+                 Each card represents datastore configuration, schema modeling,
+                 caching, and transaction isolation.
+                 ========================================================== -->
+
+            <!-- Skill Element: PostgreSQL
+                 Represents enterprise relational storage, indexing strategies (B-Tree, GIN),
+                 JSONB data types, and replication.
+                 Proficiency: 91% -->
+            <div class="skill-card" data-category="databases">
+              <div class="skill-header">
+                <span class="skill-command">$ pg_dump --schema-only</span>
+                <span class="skill-level-badge text-neon-green">91% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">🐘</span>
+                  <span class="skill-name">PostgreSQL</span>
+                </div>
+                <span class="skill-status-tag">[ACID_STORE]</span>
+              </div>
+              <p class="skill-desc">Relational schemas, foreign key integrity, JSONB operators, B-tree indexes, and connection pooling.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100" aria-label="PostgreSQL proficiency: 91%">
+                <div class="skill-meter-fill fill-green" style="width: 91%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: Redis (In-Memory Datastore & Cache)
+                 Represents ultra-fast caching layers, distributed locking, pub/sub messaging,
+                 and rate-limiting algorithms.
+                 Proficiency: 88% -->
+            <div class="skill-card" data-category="databases">
+              <div class="skill-header">
+                <span class="skill-command">$ redis-cli PING -&gt; PONG</span>
+                <span class="skill-level-badge text-neon-green">88% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">⚡</span>
+                  <span class="skill-name">Redis In-Memory</span>
+                </div>
+                <span class="skill-status-tag">[SUB_MS_CACHE]</span>
+              </div>
+              <p class="skill-desc">Key-value caching, Pub/Sub message broker, sliding-window rate limiters, and session management.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Redis proficiency: 88%">
+                <div class="skill-meter-fill fill-cyan" style="width: 88%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: MongoDB & NoSQL
+                 Represents document datastores, aggregation pipelines, replica sets,
+                 and flexible schema designs.
+                 Proficiency: 87% -->
+            <div class="skill-card" data-category="databases">
+              <div class="skill-header">
+                <span class="skill-command">$ mongosh db.users.find()</span>
+                <span class="skill-level-badge text-neon-green">87% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">🍃</span>
+                  <span class="skill-name">MongoDB & NoSQL</span>
+                </div>
+                <span class="skill-status-tag">[DOCUMENT_STORE]</span>
+              </div>
+              <p class="skill-desc">Aggregation pipelines, document indexes, Mongoose schemas, and horizontal sharding patterns.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="MongoDB proficiency: 87%">
+                <div class="skill-meter-fill fill-green" style="width: 87%;"></div>
+              </div>
+            </div>
+
+            <!-- ==========================================================
+                 CATEGORY 4: DEVOPS, CLOUD & DEVELOPMENT TOOLS
+                 Each element showcases modern infrastructure automation,
+                 containerization, cloud architecture, and version control.
+                 ========================================================== -->
+
+            <!-- Skill Element: Docker & Containerization
+                 Represents multi-stage Dockerfiles, Docker Compose networking,
+                 container image optimization, and volume mounts.
+                 Proficiency: 90% -->
+            <div class="skill-card" data-category="tools">
+              <div class="skill-header">
+                <span class="skill-command">$ docker build -t app:prod .</span>
+                <span class="skill-level-badge text-neon-green">90% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">🐳</span>
+                  <span class="skill-name">Docker & Containers</span>
+                </div>
+                <span class="skill-status-tag">[ISOLATION]</span>
+              </div>
+              <p class="skill-desc">Multi-stage builds, Alpine base images, Compose orchestration, and isolated runtime environments.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Docker proficiency: 90%">
+                <div class="skill-meter-fill fill-cyan" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: Amazon Web Services (AWS)
+                 Represents cloud infrastructure including EC2, S3, Lambda, API Gateway,
+                 RDS, IAM policies, and CloudFront CDN.
+                 Proficiency: 86% -->
+            <div class="skill-card" data-category="tools">
+              <div class="skill-header">
+                <span class="skill-command">$ aws s3 sync ./dist s3://app</span>
+                <span class="skill-level-badge text-neon-green">86% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-neon-green">☁️</span>
+                  <span class="skill-name">AWS Cloud Suite</span>
+                </div>
+                <span class="skill-status-tag">[CLOUD_INFRA]</span>
+              </div>
+              <p class="skill-desc">EC2 instances, S3 buckets, Lambda serverless functions, CloudFront CDN, and IAM security credentials.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" aria-label="AWS Cloud proficiency: 86%">
+                <div class="skill-meter-fill fill-green" style="width: 86%;"></div>
+              </div>
+            </div>
+
+            <!-- Skill Element: Git, GitHub Actions & CI/CD
+                 Represents distributed version control, semantic branching, automated test
+                 runners, and production deployment pipelines.
+                 Proficiency: 94% -->
+            <div class="skill-card" data-category="tools">
+              <div class="skill-header">
+                <span class="skill-command">$ git commit -m "feat: ship"</span>
+                <span class="skill-level-badge text-neon-green">94% PROFICIENT</span>
+              </div>
+              <div class="skill-info-row">
+                <div class="skill-icon-name">
+                  <span class="skill-glyph text-cyan">🔄</span>
+                  <span class="skill-name">Git & CI/CD Pipelines</span>
+                </div>
+                <span class="skill-status-tag">[AUTOMATION]</span>
+              </div>
+              <p class="skill-desc">Rebase workflows, GitHub Actions workflow YAMLs, automated lint/unit testing, and automated release tags.</p>
+              <div class="skill-meter-track" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" aria-label="Git and CI/CD proficiency: 94%">
+                <div class="skill-meter-fill fill-cyan" style="width: 94%;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Skills Terminal Footer Status -->
+        <div class="term-statusbar">
+          <div class="status-seg">
+            <span class="text-neon-green">●</span> 12 TOTAL SKILL RUNTIMES ACTIVE
+          </div>
+          <div class="status-seg right-aligned">
+            <span>MEM: 1.4GB / 32GB</span>
+            <span>CPU: 4.2%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 6: INTERACTIVE CAREER TIMELINE
+         Requirements:
+         - Located below Skills section
+         - Education, certifications, internships, major projects, milestones
+         - Chronological terminal logs such as:
+           "> 2024: Started Engineering"
+           "> 2025: Completed Major Project"
+           "> 2026: Software Engineering Internship"
+         - Terminal-style cards connected by a timeline
+         - Smooth CSS transitions, hover glow effects, subtle animations
+         - Responsive and easy to read
+         ==================================================================== -->
+    <section id="timeline" class="terminal-section" aria-label="Career history and milestones timeline">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 04. CHRONO_LOGS</div>
+        <h2 class="section-heading"><span class="text-cyan">$</span> journalctl --unit=career.service --output=timeline</h2>
+        <p class="section-subtext">Chronological terminal logs documenting engineering milestones, education, and career progression.</p>
+      </div>
+
+      <div class="term-window timeline-window">
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <span class="win-dot dot-close"></span>
+            <span class="win-dot dot-minimize"></span>
+            <span class="win-dot dot-maximize"></span>
+          </div>
+          <div class="term-title-text">
+            <span>auditd@system:~/var/log/career_events.log</span>
+          </div>
+          <div class="term-meta-tag">
+            <span>AUDIT: [VERIFIED_EVENTS]</span>
+          </div>
+        </div>
+
+        <div class="term-body timeline-body">
+          <!-- Timeline Vertical Spine Container -->
+          <div class="timeline-stream">
+
+            <!-- ========================================================
+                 Timeline Event 1: 2024 - Started Engineering
+                 Prompt Specification: "> 2024: Started Engineering"
+                 ======================================================== -->
+            <div class="timeline-entry" data-year="2024">
+              <!-- Glowing Terminal Node Indicator -->
+              <div class="timeline-node" aria-hidden="true">
+                <span class="node-ring"></span>
+                <span class="node-core"></span>
+              </div>
+
+              <!-- Terminal Card -->
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <!-- Terminal log title matching user request -->
+                  <h3 class="timeline-log-title">
+                    <span class="log-chevron text-neon-green">&gt;</span> 2024: Started Engineering
+                  </h3>
+                  <span class="timeline-badge badge-cyan">[FOUNDATION_BOOT]</span>
+                </div>
+                <div class="timeline-meta-bar">
+                  <span class="meta-label">DISCIPLINE:</span> Computer Science & Engineering Degree
+                  <span class="meta-sep">•</span>
+                  <span class="meta-label">FOCUS:</span> Data Structures, Algorithms & OS Internals
+                </div>
+                <p class="timeline-desc">
+                  Initiated formal software engineering and computer science studies. Deep dived into core computer science principles:
+                  discrete mathematics, algorithmic complexity (Big-O analysis), C++ memory management, and Unix system programming.
+                </p>
+                <div class="timeline-tags">
+                  <span class="t-tag">C / C++</span>
+                  <span class="t-tag">Algorithms</span>
+                  <span class="t-tag">Data Structures</span>
+                  <span class="t-tag">Unix CLI</span>
+                  <span class="t-tag">Computer Architecture</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================
+                 Timeline Event 2: 2025 - Completed Major Project
+                 Prompt Specification: "> 2025: Completed Major Project"
+                 ======================================================== -->
+            <div class="timeline-entry" data-year="2025">
+              <div class="timeline-node" aria-hidden="true">
+                <span class="node-ring"></span>
+                <span class="node-core"></span>
+              </div>
+
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <!-- Terminal log title matching user request -->
+                  <h3 class="timeline-log-title">
+                    <span class="log-chevron text-neon-green">&gt;</span> 2025: Completed Major Project
+                  </h3>
+                  <span class="timeline-badge badge-green">[FLAGSHIP_RELEASE]</span>
+                </div>
+                <div class="timeline-meta-bar">
+                  <span class="meta-label">PROJECT:</span> Distributed CyberMesh Cloud Orchestrator
+                  <span class="meta-sep">•</span>
+                  <span class="meta-label">IMPACT:</span> High-Throughput Real-Time Telemetry
+                </div>
+                <p class="timeline-desc">
+                  Architected and engineered a comprehensive full-stack distributed system monitoring dashboard. Implemented
+                  zero-trust authenticated WebSocket channels, sub-millisecond in-memory Redis caching, and real-time visualization of containerized microservices.
+                </p>
+                <div class="timeline-tags">
+                  <span class="t-tag">TypeScript</span>
+                  <span class="t-tag">Next.js</span>
+                  <span class="t-tag">Docker</span>
+                  <span class="t-tag">Redis</span>
+                  <span class="t-tag">WebSockets</span>
+                  <span class="t-tag">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================
+                 Timeline Event 3: 2026 - Software Engineering Internship
+                 Prompt Specification: "> 2026: Software Engineering Internship"
+                 ======================================================== -->
+            <div class="timeline-entry" data-year="2026">
+              <div class="timeline-node" aria-hidden="true">
+                <span class="node-ring"></span>
+                <span class="node-core"></span>
+              </div>
+
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <!-- Terminal log title matching user request -->
+                  <h3 class="timeline-log-title">
+                    <span class="log-chevron text-neon-green">&gt;</span> 2026: Software Engineering Internship
+                  </h3>
+                  <span class="timeline-badge badge-cyan">[INDUSTRY_DEPLOY]</span>
+                </div>
+                <div class="timeline-meta-bar">
+                  <span class="meta-label">ROLE:</span> Full-Stack Software Engineering Intern
+                  <span class="meta-sep">•</span>
+                  <span class="meta-label">SCOPE:</span> Scalable Web Services & Cloud Microservices
+                </div>
+                <p class="timeline-desc">
+                  Collaborated within an agile engineering squad to design high-throughput REST and GraphQL endpoints. Refactored
+                  legacy database queries resulting in a 42% decrease in latency. Authored automated CI/CD GitHub Action workflows and unit test suites.
+                </p>
+                <div class="timeline-tags">
+                  <span class="t-tag">Node.js</span>
+                  <span class="t-tag">React</span>
+                  <span class="t-tag">AWS EC2/S3</span>
+                  <span class="t-tag">REST APIs</span>
+                  <span class="t-tag">CI/CD</span>
+                  <span class="t-tag">Agile / Scrum</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================================
+                 Timeline Event 4: 2026 - Cloud & Systems Certification
+                 Milestone: AWS Certified Solutions Architect & Advanced Certs
+                 ======================================================== -->
+            <div class="timeline-entry" data-year="2026-cert">
+              <div class="timeline-node" aria-hidden="true">
+                <span class="node-ring"></span>
+                <span class="node-core"></span>
+              </div>
+
+              <div class="timeline-card">
+                <div class="timeline-card-header">
+                  <h3 class="timeline-log-title">
+                    <span class="log-chevron text-neon-green">&gt;</span> 2026: Cloud Solutions Certification
+                  </h3>
+                  <span class="timeline-badge badge-green">[CREDENTIAL_OK]</span>
+                </div>
+                <div class="timeline-meta-bar">
+                  <span class="meta-label">PROVIDER:</span> Cloud Architecture Credentials & Security
+                  <span class="meta-sep">•</span>
+                  <span class="meta-label">STATUS:</span> Verified Active
+                </div>
+                <p class="timeline-desc">
+                  Achieved professional verification in cloud systems design, multi-region high availability architectures,
+                  VPC subnet isolation, automated backup strategies, and cost-effective serverless execution.
+                </p>
+                <div class="timeline-tags">
+                  <span class="t-tag">AWS Architecture</span>
+                  <span class="t-tag">Security & IAM</span>
+                  <span class="t-tag">VPC Networking</span>
+                  <span class="t-tag">Serverless</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Timeline Status Bar -->
+        <div class="term-statusbar">
+          <div class="status-seg">
+            <span class="text-cyan">LOG_COUNT:</span> 4 RECORDS PARSED
+          </div>
+          <div class="status-seg right-aligned">
+            <span>TIMELINE: 2024 - 2026+ [CURRENT]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 7: PROJECTS SECTION
+         Requirements:
+         - Styled like a hacker terminal or command-line interface
+         - Multiple projects as terminal-window cards
+         - Project name, description, technologies used, project status
+         - Each project card must be clickable and open GitHub repo, live demo, or detailed page
+         - Terminal-style controls, neon borders, hover glow effects, consistent spacing
+         - Comments explaining how each project card connects to its corresponding link
+         ==================================================================== -->
+    <section id="projects" class="terminal-section" aria-label="Software engineering projects portfolio">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 05. REPOSITORY_SHOWCASE</div>
+        <h2 class="section-heading"><span class="text-neon-green">$</span> git log --oneline --projects-featured</h2>
+        <p class="section-subtext">Production-ready open-source software, cloud architectures, and developer utilities.</p>
+      </div>
+
+      <div class="projects-container">
+        <!-- Interactive Terminal Prompt Filter Toolbar -->
+        <div class="projects-filter-bar">
+          <span class="prompt-text text-neon-green">developer@workstation:~/repos$</span>
+          <span class="text-dim">ls -la --sort=featured</span>
+          <span class="projects-count-chip">[6 DEPLOYMENTS]</span>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- ================================================================
+               PROJECT CARD 1: CyberMesh Cloud Orchestrator
+               LINK EXPLANATION:
+               This card represents an open-source cloud monitoring suite.
+               Clicking the card header or action buttons connects directly to:
+               - Live Demo: Opens interactive dashboard web application
+               - GitHub Repository: Inspects full source code and Docker setup
+               ================================================================ -->
+          <article class="project-term-card" tabindex="0" aria-label="Project: CyberMesh Cloud Orchestrator">
+            <div class="project-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="win-dot dot-close"></span>
+                <span class="win-dot dot-minimize"></span>
+                <span class="win-dot dot-maximize"></span>
+              </div>
+              <div class="project-path">~/repos/cybermesh-orchestrator</div>
+              <!-- Project Status: Deployed in Production -->
+              <div class="project-status-tag status-live" title="Deployment Status">
+                <span class="status-live-dot"></span> STATUS: [LIVE_PROD]
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-title-row">
+                <h3 class="project-name">CyberMesh Cloud Orchestrator</h3>
+                <span class="project-version">v2.4.0</span>
+              </div>
+
+              <p class="project-description">
+                Distributed container and microservice mesh monitor featuring real-time telemetry streaming, zero-trust
+                mutual TLS handshake simulation, sub-second Redis event streaming, and automated failover orchestration.
+              </p>
+
+              <!-- Technology Stack Badges -->
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Next.js 14</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Redis</span>
+                <span class="tech-tag">WebSockets</span>
+                <span class="tech-tag">Tailwind</span>
+              </div>
+
+              <!-- Clickable Project Links:
+                   - Live Demo: opens deployed production demo
+                   - GitHub: opens repository codebase
+                   Clicking these links opens in a secure new tab (_blank) with rel="noopener noreferrer" -->
+              <div class="project-links-row">
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-primary" title="Inspect source code on GitHub" aria-label="View CyberMesh source code on GitHub">
+                  <span class="btn-icon">⚡</span>
+                  <span>VIEW_CODE</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-secondary" title="Launch live deployed demo" aria-label="Launch CyberMesh live demo">
+                  <span class="btn-icon">▶</span>
+                  <span>LIVE_DEMO</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-footer">
+              <span class="footer-branch">git:(main)</span>
+              <span class="footer-hash">commit 8a4f91c</span>
+            </div>
+          </article>
+
+          <!-- ================================================================
+               PROJECT CARD 2: NexusQL High-Throughput API Gateway
+               LINK EXPLANATION:
+               This card represents a backend reverse proxy and GraphQL aggregation service.
+               Clicking the action buttons connects directly to:
+               - GitHub: Backend source code, benchmarks, and API documentation
+               - Live Demo: Interactive API query playground
+               ================================================================ -->
+          <article class="project-term-card" tabindex="0" aria-label="Project: NexusQL API Gateway">
+            <div class="project-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="win-dot dot-close"></span>
+                <span class="win-dot dot-minimize"></span>
+                <span class="win-dot dot-maximize"></span>
+              </div>
+              <div class="project-path">~/repos/nexusql-gateway</div>
+              <!-- Project Status: Active & Operational -->
+              <div class="project-status-tag status-active" title="Deployment Status">
+                <span class="status-live-dot"></span> STATUS: [ACTIVE_v3.1]
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-title-row">
+                <h3 class="project-name">NexusQL High-Throughput API Gateway</h3>
+                <span class="project-version">v3.1.2</span>
+              </div>
+
+              <p class="project-description">
+                Ultra-fast reverse proxy and GraphQL schema stitching gateway engineered with Node.js and Go. Handles
+                rate limiting using Redis token buckets, JWT validation caching, and request deduplication.
+              </p>
+
+              <!-- Technology Stack Badges -->
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span class="tech-tag">Go</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">JWT</span>
+                <span class="tech-tag">Redis</span>
+              </div>
+
+              <!-- Clickable Project Links connecting to GitHub and Docs -->
+              <div class="project-links-row">
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-primary" title="View repository on GitHub" aria-label="View NexusQL source code on GitHub">
+                  <span class="btn-icon">⚡</span>
+                  <span>VIEW_CODE</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-secondary" title="View interactive API Playground" aria-label="Open NexusQL API Playground">
+                  <span class="btn-icon">▶</span>
+                  <span>API_DOCS</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-footer">
+              <span class="footer-branch">git:(stable)</span>
+              <span class="footer-hash">commit 4c77e21</span>
+            </div>
+          </article>
+
+          <!-- ================================================================
+               PROJECT CARD 3: Sentinel AI Vulnerability Scanner
+               LINK EXPLANATION:
+               This card represents an automated static security analysis tool.
+               Clicking the action buttons connects directly to:
+               - GitHub: CLI tool repository with installation instructions via pip/npm
+               - Live Demo: Web dashboard scanning sample repositories
+               ================================================================ -->
+          <article class="project-term-card" tabindex="0" aria-label="Project: Sentinel AI Security Scanner">
+            <div class="project-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="win-dot dot-close"></span>
+                <span class="win-dot dot-minimize"></span>
+                <span class="win-dot dot-maximize"></span>
+              </div>
+              <div class="project-path">~/repos/sentinel-sec-scanner</div>
+              <!-- Project Status: Deployed Security Tool -->
+              <div class="project-status-tag status-live" title="Deployment Status">
+                <span class="status-live-dot"></span> STATUS: [OPEN_SOURCE]
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-title-row">
+                <h3 class="project-name">Sentinel AI Vulnerability Scanner</h3>
+                <span class="project-version">v1.8.4</span>
+              </div>
+
+              <p class="project-description">
+                Automated security auditing CLI and dashboard that parses dependency trees for CVEs, detects leaked
+                secrets in git commits, and uses vector embeddings to spot insecure API coding patterns.
+              </p>
+
+              <!-- Technology Stack Badges -->
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span class="tech-tag">Python 3</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">AST Parser</span>
+                <span class="tech-tag">OpenAI API</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+
+              <!-- Clickable Project Links connecting to GitHub and Live Demo -->
+              <div class="project-links-row">
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-primary" title="View Sentinel security scanner repo on GitHub" aria-label="View Sentinel source code on GitHub">
+                  <span class="btn-icon">⚡</span>
+                  <span>VIEW_CODE</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-secondary" title="View live scanner dashboard" aria-label="Open Sentinel live scanner demo">
+                  <span class="btn-icon">▶</span>
+                  <span>LIVE_SCAN</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-footer">
+              <span class="footer-branch">git:(main)</span>
+              <span class="footer-hash">commit 9f12b0a</span>
+            </div>
+          </article>
+
+          <!-- ================================================================
+               PROJECT CARD 4: KernelTrace Real-time Linux Profiler
+               LINK EXPLANATION:
+               This card represents a systems-level performance monitoring project.
+               Clicking the action buttons connects directly to:
+               - GitHub: eBPF tracing scripts and dashboard backend
+               - Live Demo: Interactive telemetry simulation
+               ================================================================ -->
+          <article class="project-term-card" tabindex="0" aria-label="Project: KernelTrace Profiler">
+            <div class="project-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="win-dot dot-close"></span>
+                <span class="win-dot dot-minimize"></span>
+                <span class="win-dot dot-maximize"></span>
+              </div>
+              <div class="project-path">~/repos/kernel-trace-profiler</div>
+              <!-- Project Status: Tested & Validated -->
+              <div class="project-status-tag status-active" title="Deployment Status">
+                <span class="status-live-dot"></span> STATUS: [v1.2_BENCH]
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-title-row">
+                <h3 class="project-name">KernelTrace Real-Time Profiler</h3>
+                <span class="project-version">v1.2.0</span>
+              </div>
+
+              <p class="project-description">
+                Linux kernel observability tool that hooks system calls, traces socket throughput, generates flamegraphs
+                for CPU bottlenecks, and visualizes network packet drops with zero measurable overhead.
+              </p>
+
+              <!-- Technology Stack Badges -->
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">eBPF</span>
+                <span class="tech-tag">Linux</span>
+                <span class="tech-tag">WebAssembly</span>
+                <span class="tech-tag">Chart.js</span>
+              </div>
+
+              <!-- Clickable Project Links connecting to GitHub and Benchmarks -->
+              <div class="project-links-row">
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-primary" title="View KernelTrace repo on GitHub" aria-label="View KernelTrace source code on GitHub">
+                  <span class="btn-icon">⚡</span>
+                  <span>VIEW_CODE</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-secondary" title="View live flamegraph demo" aria-label="Open KernelTrace live demo">
+                  <span class="btn-icon">▶</span>
+                  <span>FLAME_GRAPH</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-footer">
+              <span class="footer-branch">git:(master)</span>
+              <span class="footer-hash">commit 1e67c83</span>
+            </div>
+          </article>
+
+          <!-- ================================================================
+               PROJECT CARD 5: CryptoVault Enterprise Key Manager
+               LINK EXPLANATION:
+               This card represents a cryptographic secrets management microservice.
+               Clicking the action buttons connects directly to:
+               - GitHub: Cryptographic module source code and test suite
+               - Docs: Architecture specification and audit report
+               ================================================================ -->
+          <article class="project-term-card" tabindex="0" aria-label="Project: CryptoVault Key Manager">
+            <div class="project-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="win-dot dot-close"></span>
+                <span class="win-dot dot-minimize"></span>
+                <span class="win-dot dot-maximize"></span>
+              </div>
+              <div class="project-path">~/repos/cryptovault-hsm</div>
+              <!-- Project Status: Deployed Security Microservice -->
+              <div class="project-status-tag status-live" title="Deployment Status">
+                <span class="status-live-dot"></span> STATUS: [SECURE_AUDITED]
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-title-row">
+                <h3 class="project-name">CryptoVault Enterprise Key Manager</h3>
+                <span class="project-version">v2.0.1</span>
+              </div>
+
+              <p class="project-description">
+                Zero-knowledge key storage system implementing envelope encryption with AES-256-GCM and RSA-4096.
+                Features strict role-based access control (RBAC), tamper-proof audit trails, and automatic secret rotation.
+              </p>
+
+              <!-- Technology Stack Badges -->
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">AES-256</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+
+              <!-- Clickable Project Links connecting to GitHub and Security Docs -->
+              <div class="project-links-row">
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-primary" title="View CryptoVault repo on GitHub" aria-label="View CryptoVault source code on GitHub">
+                  <span class="btn-icon">⚡</span>
+                  <span>VIEW_CODE</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-secondary" title="View security documentation" aria-label="View CryptoVault documentation">
+                  <span class="btn-icon">▶</span>
+                  <span>DOCS_SPEC</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-footer">
+              <span class="footer-branch">git:(main)</span>
+              <span class="footer-hash">commit 77a01cd</span>
+            </div>
+          </article>
+
+          <!-- ================================================================
+               PROJECT CARD 6: WebAudio Cyber Synthesizer
+               LINK EXPLANATION:
+               This card represents an interactive Web Audio API synthesizer.
+               Clicking the action buttons connects directly to:
+               - GitHub: Audio synthesis DSP source code
+               - Live Demo: Interactive in-browser synthesizer
+               ================================================================ -->
+          <article class="project-term-card" tabindex="0" aria-label="Project: WebAudio Cyber Synthesizer">
+            <div class="project-card-header">
+              <div class="window-controls" aria-hidden="true">
+                <span class="win-dot dot-close"></span>
+                <span class="win-dot dot-minimize"></span>
+                <span class="win-dot dot-maximize"></span>
+              </div>
+              <div class="project-path">~/repos/cyber-synth-engine</div>
+              <!-- Project Status: Interactive Release -->
+              <div class="project-status-tag status-live" title="Deployment Status">
+                <span class="status-live-dot"></span> STATUS: [LIVE_APP]
+              </div>
+            </div>
+
+            <div class="project-card-body">
+              <div class="project-title-row">
+                <h3 class="project-name">WebAudio Cyber Synthesizer</h3>
+                <span class="project-version">v1.5.0</span>
+              </div>
+
+              <p class="project-description">
+                Real-time browser-based frequency synthesizer and spectrum analyzer built with the Web Audio API and
+                HTML5 Canvas. Features polyphonic oscillators, envelope generators, and retro bit-crushing filters.
+              </p>
+
+              <!-- Technology Stack Badges -->
+              <div class="project-tech-tags" aria-label="Technologies used">
+                <span class="tech-tag">Vanilla JS</span>
+                <span class="tech-tag">Web Audio API</span>
+                <span class="tech-tag">Canvas 2D</span>
+                <span class="tech-tag">CSS Grid</span>
+              </div>
+
+              <!-- Clickable Project Links connecting to GitHub and Interactive Demo -->
+              <div class="project-links-row">
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-primary" title="View WebAudio synthesizer repo on GitHub" aria-label="View WebAudio source code on GitHub">
+                  <span class="btn-icon">⚡</span>
+                  <span>VIEW_CODE</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+                <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer"
+                  class="project-link-btn btn-secondary" title="Play with live synthesizer" aria-label="Launch WebAudio live synthesizer demo">
+                  <span class="btn-icon">▶</span>
+                  <span>LAUNCH_APP</span>
+                  <span class="link-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="project-card-footer">
+              <span class="footer-branch">git:(prod)</span>
+              <span class="footer-hash">commit 5d992e1</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 8: YOUTUBE VIDEO SECTION
+         Requirements:
+         - Video Showcase section with a responsive embedded YouTube video
+         - Placed inside a terminal window with header:
+           "user@portfolio:~$ ./watch-project"
+         - Responsive "aspect-ratio" container
+         - Neon borders, terminal-style controls, short caption explaining the video
+         - Visually consistent with hacker theme
+         ==================================================================== -->
+    <section id="video-showcase" class="terminal-section" aria-label="Engineering video showcase and demonstration">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 06. MEDIA_STREAM</div>
+        <h2 class="section-heading"><span class="text-cyan">$</span> ./watch-project --stream=hd --subtitles=on</h2>
+        <p class="section-subtext">Interactive software architecture walkthrough, code review, and live system demonstration.</p>
+      </div>
+
+      <!-- Terminal Window Housing the YouTube Video -->
+      <div class="term-window video-term-window">
+        <!-- Terminal Header with requested command path -->
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <span class="win-dot dot-close" title="Close stream"></span>
+            <span class="win-dot dot-minimize" title="Minimize stream"></span>
+            <span class="win-dot dot-maximize" title="Maximize stream"></span>
+          </div>
+          <!-- Exact Header Requested: "user@portfolio:~$ ./watch-project" -->
+          <div class="term-title-text">
+            <span class="term-prompt-user">user@portfolio</span>:<span class="text-cyan">~</span>$&nbsp;<span class="text-neon-green">./watch-project</span>
+          </div>
+          <div class="term-meta-tag video-live-tag">
+            <span class="rec-dot"></span> STREAM // 1080p60
+          </div>
+        </div>
+
+        <!-- Terminal Video Body -->
+        <div class="term-body video-term-body">
+          <!-- Terminal Stream Telemetry Bar -->
+          <div class="video-meta-bar">
+            <div class="meta-item">
+              <span class="meta-k">CODEC:</span>
+              <span class="meta-v text-neon-green">H.264 / AAC</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-k">BITRATE:</span>
+              <span class="meta-v text-cyan">8500 kbps</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-k">BUFFER:</span>
+              <span class="meta-v">OPTIMAL (100%)</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-k">STATUS:</span>
+              <span class="meta-v text-neon-green">ACTIVE FEED</span>
+            </div>
+          </div>
+
+          <!-- Responsive Aspect-Ratio Video Container (16:9) -->
+          <div class="video-aspect-container">
+            <iframe 
+              id="portfolioDemoVideo"
+              class="terminal-embedded-video"
+              src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&color=white" 
+              title="Yashwanth - Software Architecture & Full-Stack Engineering Showcase" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <!-- Video Technical Caption & Architecture Notes -->
+          <div class="video-caption-terminal">
+            <div class="caption-header">
+              <span class="caption-icon text-neon-green">&gt;&gt;</span>
+              <strong class="caption-title">SYSTEM DEMONSTRATION & ARCHITECTURE RUNTHROUGH</strong>
+            </div>
+            <p class="caption-text">
+              In-depth engineering walkthrough covering full-stack system design, database query optimization under
+              high concurrency, containerized deployment pipelines, and building low-latency reactive user interfaces.
+              Demonstrates end-to-end integration across frontend, Node/Go services, and PostgreSQL data stores.
+            </p>
+            <div class="caption-footer-chips">
+              <span class="caption-chip">⚡ ARCHITECTURE OVERVIEW</span>
+              <span class="caption-chip">🐳 DOCKER DEPLOYMENTS</span>
+              <span class="caption-chip">🚀 HIGH-PERFORMANCE WEB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Terminal Footer Status -->
+        <div class="term-statusbar">
+          <div class="status-seg">
+            <span class="text-neon-green">●</span> STREAMING READY • ASPECT RATIO: 16:9 RESPONSIVE
+          </div>
+          <div class="status-seg right-aligned">
+            <span>FPS: 60.0</span>
+            <span>DROPPED: 0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 9: TESTIMONIALS SECTION
+         Requirements:
+         - Looks like terminal output logs
+         - Testimonials from clients, teammates, professors, or peers
+         - Dark terminal-style cards with neon borders and subtle shadows
+         - Include person's name, role, feedback
+         - Formatted like terminal messages or system logs
+         - Professional and readable
+         - Subtle hover and glow effects
+         ==================================================================== -->
+    <section id="testimonials" class="terminal-section" aria-label="Endorsements and peer testimonials">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 07. AUTHENTICATED_FEEDBACK</div>
+        <h2 class="section-heading"><span class="text-neon-green">$</span> tail -f /var/log/testimonials.audit</h2>
+        <p class="section-subtext">Verified peer reviews, teammate endorsements, and leadership evaluations formatted as system logs.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <!-- ================================================================
+             TESTIMONIAL 1: Engineering Lead / Vice President
+             ================================================================ -->
+        <div class="testimonial-log-card" tabindex="0">
+          <div class="log-card-header">
+            <div class="log-timestamp text-dim">[2026-02-14 09:41:22 UTC]</div>
+            <div class="log-level text-neon-green">[LOG_VERIFIED // PEER_OK]</div>
+          </div>
+
+          <div class="log-content-body">
+            <div class="log-prompt-prefix">&gt; cat recommendation_01.txt</div>
+            <blockquote class="log-quote">
+              “Yashwanth is an exceptional software engineer with a rare blend of deep algorithmic rigor and
+              practical product intuition. During our cloud microservices sprint, he refactored our caching pipeline,
+              reducing query response times by over 40%. His technical communication and architectural choices are top-tier.”
+            </blockquote>
+          </div>
+
+          <div class="log-author-info">
+            <div class="author-avatar-frame">
+              <span class="author-glyph">SC</span>
+            </div>
+            <div class="author-details">
+              <div class="author-name">Sarah Chen</div>
+              <div class="author-role">VP of Engineering • CloudScale Systems</div>
+              <div class="author-meta text-dim">VERIFICATION: GPG_KEY_OK (0x8F92A)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             TESTIMONIAL 2: Computer Science Professor / Faculty
+             ================================================================ -->
+        <div class="testimonial-log-card" tabindex="0">
+          <div class="log-card-header">
+            <div class="log-timestamp text-dim">[2025-11-28 14:18:05 UTC]</div>
+            <div class="log-level text-cyan">[LOG_VERIFIED // ACADEMIC_OK]</div>
+          </div>
+
+          <div class="log-content-body">
+            <div class="log-prompt-prefix">&gt; cat faculty_endorsement.txt</div>
+            <blockquote class="log-quote">
+              “Yashwanth consistently demonstrated unmatched mastery in advanced data structures and operating systems.
+              His capstone project in distributed fault-tolerant clustering set a new benchmark for student engineering.
+              He writes clean, self-documenting code with an uncompromising standard for correctness.”
+            </blockquote>
+          </div>
+
+          <div class="log-author-info">
+            <div class="author-avatar-frame frame-green">
+              <span class="author-glyph text-neon-green">RK</span>
+            </div>
+            <div class="author-details">
+              <div class="author-name">Dr. Rajesh Kumar</div>
+              <div class="author-role">Professor of Computer Science & Systems</div>
+              <div class="author-meta text-dim">VERIFICATION: ACADEMIC_CRED (0x3E11C)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             TESTIMONIAL 3: Principal DevOps / Site Reliability Engineer
+             ================================================================ -->
+        <div class="testimonial-log-card" tabindex="0">
+          <div class="log-card-header">
+            <div class="log-timestamp text-dim">[2025-08-04 18:32:49 UTC]</div>
+            <div class="log-level text-neon-green">[LOG_VERIFIED // SRE_OK]</div>
+          </div>
+
+          <div class="log-content-body">
+            <div class="log-prompt-prefix">&gt; cat devops_review.txt</div>
+            <blockquote class="log-quote">
+              “Collaborating with Yashwanth on infrastructure automation was a seamless experience. He treats
+              infrastructure-as-code with the same rigor as application logic. His Docker configurations and CI/CD
+              pipelines were flawlessly orchestrated, resulting in zero downtime deployments.”
+            </blockquote>
+          </div>
+
+          <div class="log-author-info">
+            <div class="author-avatar-frame frame-cyan">
+              <span class="author-glyph text-cyan">AM</span>
+            </div>
+            <div class="author-details">
+              <div class="author-name">Alex Mercer</div>
+              <div class="author-role">Principal DevOps & Infrastructure Engineer</div>
+              <div class="author-meta text-dim">VERIFICATION: SRE_AUDIT_OK (0x9A44F)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================
+             TESTIMONIAL 4: Senior Product Manager / Peer
+             ================================================================ -->
+        <div class="testimonial-log-card" tabindex="0">
+          <div class="log-card-header">
+            <div class="log-timestamp text-dim">[2025-05-19 11:05:12 UTC]</div>
+            <div class="log-level text-cyan">[LOG_VERIFIED // PRODUCT_OK]</div>
+          </div>
+
+          <div class="log-content-body">
+            <div class="log-prompt-prefix">&gt; cat product_lead_review.txt</div>
+            <blockquote class="log-quote">
+              “Yashwanth doesn't just build features; he builds high-leverage software solutions that solve real business
+              problems. His focus on user experience and snappy web responsiveness transformed our user retention metrics.
+              Any team would be immensely fortunate to have him.”
+            </blockquote>
+          </div>
+
+          <div class="log-author-info">
+            <div class="author-avatar-frame">
+              <span class="author-glyph">PS</span>
+            </div>
+            <div class="author-details">
+              <div class="author-name">Priya Sharma</div>
+              <div class="author-role">Senior Product Manager • Apex Cloud</div>
+              <div class="author-meta text-dim">VERIFICATION: PM_SIGN_OFF (0x55C8B)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 10: AI CHAT INTERFACE
+         Requirements:
+         - Looks like an interactive hacker terminal
+         - Terminal window titled: "AI_PORTFOLIO_ASSISTANT.exe"
+         - Chat/message display area
+         - Command-line style input field
+         - Send button
+         - Typing animation
+         - Blinking terminal cursor
+         - Simulated AI responses using JavaScript (answering questions about
+           portfolio owner, skills, projects, education, experience)
+         - Clear comments in JavaScript showing where AI API (e.g. OpenAI)
+           can be integrated later. Do not expose API keys in frontend code.
+         ==================================================================== -->
+    <section id="ai-assistant" class="terminal-section" aria-label="Interactive AI terminal assistant">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 08. NEURAL_INTERFACE</div>
+        <h2 class="section-heading"><span class="text-cyan">$</span> ./run-ai-agent --model=neural-proxy-v4</h2>
+        <p class="section-subtext">Chat interactively with an autonomous AI assistant trained on Yashwanth's engineering profile, tech stack, and background.</p>
+      </div>
+
+      <!-- Main AI Terminal Window -->
+      <div class="term-window ai-term-window">
+        <!-- Exact Header Requested: "AI_PORTFOLIO_ASSISTANT.exe" -->
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <button id="clearChatBtn" class="term-mini-btn" title="Clear Chat Log History" aria-label="Clear chat log">CLEAR</button>
+            <span class="win-dot dot-close" title="Close AI Console"></span>
+            <span class="win-dot dot-minimize" title="Minimize AI Console"></span>
+            <span class="win-dot dot-maximize" title="Maximize AI Console"></span>
+          </div>
+          <div class="term-title-text ai-title-badge">
+            <span class="text-neon-green">AI_PORTFOLIO_ASSISTANT.exe</span>
+            <span class="version-label">[v4.2.0-STABLE]</span>
+          </div>
+          <div class="term-meta-tag ai-pulse-tag">
+            <span class="tag-pulse"></span>
+            <span>MODEL: ONLINE</span>
+          </div>
+        </div>
+
+        <!-- Terminal Chat Window Body -->
+        <div class="term-body ai-term-body">
+          <!-- Terminal AI Banner -->
+          <div class="ai-intro-banner">
+            <div class="banner-prompt-text text-neon-green">
+              [SYSTEM_INITIALIZED] Yashwanth AI Assistant Daemon loaded into memory.
+            </div>
+            <p class="banner-subtext text-dim">
+              Ask anything regarding Yashwanth's programming languages, system architecture experience, featured projects,
+              education, or hiring availability. You can also execute terminal commands like <code class="cli-code">help</code>, <code class="cli-code">skills</code>, <code class="cli-code">projects</code>, or <code class="cli-code">clear</code>.
+            </p>
+          </div>
+
+          <!-- Quick Suggestion Query Chips -->
+          <div class="ai-quick-queries" aria-label="Quick question prompts for AI assistant">
+            <span class="quick-queries-label text-cyan">$ quick-query:</span>
+            <button type="button" class="quick-chip-btn" data-query="What programming languages and frameworks do you specialize in?">⚡ Top Skills</button>
+            <button type="button" class="quick-chip-btn" data-query="Can you summarize your featured software projects?">📁 Projects</button>
+            <button type="button" class="quick-chip-btn" data-query="What is your education and career timeline?">📜 Experience & Timeline</button>
+            <button type="button" class="quick-chip-btn" data-query="Are you currently available for hire or contract roles?">💼 Availability</button>
+            <button type="button" class="quick-chip-btn" data-query="How can I contact or schedule an interview with Yashwanth?">✉ Contact Info</button>
+          </div>
+
+          <!-- Chat / Message Display Area -->
+          <div class="ai-chat-display" id="aiChatDisplay" role="log" aria-live="polite" aria-label="AI Conversation Transcript">
+            <div class="chat-messages-stream" id="chatMessagesStream">
+
+              <!-- Initial Welcome Message from AI Assistant -->
+              <div class="chat-entry bot-entry">
+                <div class="entry-meta">
+                  <span class="entry-sender text-neon-green">[AI_ASSISTANT @ NEURAL_CORE]:</span>
+                  <span class="entry-time text-dim">00:00:01</span>
+                </div>
+                <div class="entry-bubble bot-bubble">
+                  <p>
+                    Hello! I am Yashwanth's AI Portfolio Assistant. I have indexed his complete technical stack,
+                    production projects, cloud certifications, and career history.
+                  </p>
+                  <p class="entry-tip text-cyan">
+                    How can I assist your engineering inquiry today? Feel free to ask a custom question or select one of the quick chips above.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Typing Animation Container (Activated while simulated AI is generating response) -->
+            <div class="ai-typing-indicator" id="aiTypingIndicator" style="display: none;" aria-hidden="true">
+              <span class="typing-icon text-neon-green">&gt;</span>
+              <span class="typing-label">AI_ASSISTANT is generating response</span>
+              <span class="typing-dots">
+                <span>.</span><span>.</span><span>.</span>
+              </span>
+              <span class="term-cursor">█</span>
+            </div>
+          </div>
+
+          <!-- Command-Line Style Input Field Form -->
+          <form class="ai-input-form" id="aiChatForm" novalidate>
+            <div class="input-prompt-label" aria-hidden="true">
+              <span class="text-neon-green">visitor@portfolio</span>:<span class="text-cyan">~</span>$&nbsp;
+            </div>
+
+            <div class="input-field-wrapper">
+              <input 
+                type="text" 
+                id="aiChatInput" 
+                class="ai-terminal-input" 
+                placeholder="Ask a question or enter command (e.g., 'What tech stack do you use?')..." 
+                aria-label="Input prompt for AI Portfolio Assistant"
+                autocomplete="off"
+                spellcheck="false"
+                required
+              >
+              <!-- Blinking cursor indicator -->
+              <span class="input-blinking-cursor" aria-hidden="true">_</span>
+            </div>
+
+            <!-- Send Button -->
+            <button type="submit" class="term-btn btn-neon-green ai-send-btn" id="aiSendBtn" aria-label="Transmit message to AI Assistant">
+              <span class="btn-text">SEND</span>
+              <span class="btn-arrow" aria-hidden="true">↵</span>
+            </button>
+          </form>
+
+          <!-- Input Footer Hint -->
+          <div class="ai-footer-hint">
+            <span class="hint-key text-dim">PRO-TIP:</span> Press <kbd class="kbd-key">Enter</kbd> to submit query • Type <code class="cli-code">help</code> for terminal commands
+          </div>
+        </div>
+
+        <!-- Terminal Status Bar -->
+        <div class="term-statusbar">
+          <div class="status-seg">
+            <span class="text-neon-green">●</span> AI DAEMON: ACTIVE • LATENCY: 28ms
+          </div>
+          <div class="status-seg right-aligned">
+            <span>READY FOR INPUT</span>
+            <span class="text-cyan">[SECURE]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 11: CONTACT / DISPATCH TRANSMISSION
+         ==================================================================== -->
+    <section id="contact" class="terminal-section" aria-label="Contact and transmission dispatch">
+      <div class="section-terminal-header">
+        <div class="section-tag-prefix">// 09. DISPATCH_TRANSMISSION</div>
+        <h2 class="section-heading"><span class="text-neon-green">$</span> ./dispatch-email --recipient="yashwanth"</h2>
+        <p class="section-subtext">Direct encrypted transmission channel for full-time opportunities, engineering collaborations, or inquiries.</p>
+      </div>
+
+      <div class="term-window contact-window">
+        <div class="term-titlebar">
+          <div class="window-controls" aria-hidden="true">
+            <span class="win-dot dot-close"></span>
+            <span class="win-dot dot-minimize"></span>
+            <span class="win-dot dot-maximize"></span>
+          </div>
+          <div class="term-title-text">
+            <span>mailx@daemon:~/bin/dispatch_message.sh</span>
+          </div>
+          <div class="term-meta-tag">
+            <span>PROTOCOL: TLSv1.3</span>
+          </div>
+        </div>
+
+        <div class="term-body contact-body">
+          <!-- Transmission Success Banner -->
+          <div id="contactSuccessBanner" class="transmission-alert alert-success" style="display: none;" role="status">
+            <div class="alert-icon text-neon-green">✓</div>
+            <div class="alert-message">
+              <strong class="alert-title text-neon-green">TRANSMISSION DISPATCHED SUCCESSFULLY!</strong>
+              <p>Your encrypted message has been logged into Yashwanth's dispatch queue. A confirmation response will be returned within 24 standard hours.</p>
+            </div>
+            <button type="button" id="dismissAlertBtn" class="alert-dismiss-btn" aria-label="Dismiss alert">✕</button>
+          </div>
+
+          <!-- Contact Form Styled like Terminal Inputs -->
+          <form class="terminal-form" id="contactForm" novalidate>
+            <div class="form-grid-2col">
+              <!-- Sender Name -->
+              <div class="form-group">
+                <label for="contactName" class="form-label">
+                  <span class="label-flag text-cyan">--caller-name</span> <span class="text-neon-green">*</span>
+                </label>
+                <div class="input-box">
+                  <span class="input-cli-prefix">&gt;</span>
+                  <input 
+                    type="text" 
+                    id="contactName" 
+                    name="name" 
+                    class="term-text-input" 
+                    placeholder="e.g. John Doe / Engineering Recruiter" 
+                    required
+                    autocomplete="name"
+                  >
+                </div>
+                <span class="field-error-text" id="nameError"></span>
+              </div>
+
+              <!-- Sender Email -->
+              <div class="form-group">
+                <label for="contactEmail" class="form-label">
+                  <span class="label-flag text-cyan">--return-address</span> <span class="text-neon-green">*</span>
+                </label>
+                <div class="input-box">
+                  <span class="input-cli-prefix">&gt;</span>
+                  <input 
+                    type="email" 
+                    id="contactEmail" 
+                    name="email" 
+                    class="term-text-input" 
+                    placeholder="e.g. j.doe@company.com" 
+                    required
+                    autocomplete="email"
+                  >
+                </div>
+                <span class="field-error-text" id="emailError"></span>
+              </div>
+            </div>
+
+            <!-- Subject / Opportunity Type -->
+            <div class="form-group">
+              <label for="contactSubject" class="form-label">
+                <span class="label-flag text-cyan">--subject-category</span>
+              </label>
+              <div class="input-box">
+                <span class="input-cli-prefix">&gt;</span>
+                <select id="contactSubject" name="subject" class="term-select-input">
+                  <option value="Full-Time Engineering Role">💼 Full-Time Software Engineering Role</option>
+                  <option value="Distributed Systems Consulting">⚡ Distributed Systems / Architecture Project</option>
+                  <option value="Open Source Collaboration">🔮 Open Source Engineering Collaboration</option>
+                  <option value="Technical Networking">☕ Casual Technical Chat & Networking</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message Payload -->
+            <div class="form-group">
+              <label for="contactMessage" class="form-label">
+                <span class="label-flag text-cyan">--payload-message</span> <span class="text-neon-green">*</span>
+              </label>
+              <div class="input-box textarea-box">
+                <span class="input-cli-prefix">&gt;</span>
+                <textarea 
+                  id="contactMessage" 
+                  name="message" 
+                  rows="5" 
+                  class="term-textarea-input" 
+                  placeholder="Describe your engineering role, project scope, tech stack, or inquiry..."
+                  required
+                ></textarea>
+              </div>
+              <span class="field-error-text" id="messageError"></span>
+            </div>
+
+            <!-- Form Submit Action -->
+            <div class="form-actions-bar">
+              <button type="submit" class="term-btn btn-neon-green submit-btn" id="contactSubmitBtn">
+                <span class="btn-prompt">$</span>
+                <span class="btn-text">DISPATCH_TRANSMISSION</span>
+                <span class="btn-arrow" aria-hidden="true">✉</span>
+              </button>
+              <div class="form-security-note text-dim">
+                <span class="lock-icon">🔒</span> End-to-end encrypted dispatch • No spam guarantee
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact Status Bar -->
+        <div class="term-statusbar">
+          <div class="status-seg">
+            <span>SOCKET: ESTABLISHED</span>
+            <span class="text-neon-green">[TLS 1.3]</span>
+          </div>
+          <div class="status-seg right-aligned">
+            <span>DISPATCH QUEUE: READY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 12: FOOTER / TERMINAL TELEMETRY & SOCIAL ENDPOINTS
+         ==================================================================== -->
+    <footer class="terminal-footer" role="contentinfo" aria-label="Terminal footer and social coordinates">
+      <div class="footer-container">
+        <!-- Top Footer Brand -->
+        <div class="footer-top-row">
+          <div class="footer-brand">
+            <span class="footer-prompt-icon text-neon-green">#</span>
+            <span class="footer-title">YASHWANTH // SOFTWARE_ENGINEER_PORTFOLIO</span>
+            <span class="footer-version-tag">PROD_2026.4</span>
+          </div>
+
+          <button id="backToTopBtn" class="term-btn btn-outline back-top-btn" title="Scroll back to top terminal console" aria-label="Back to top of terminal">
+            <span class="btn-arrow">▲</span>
+            <span class="btn-text">SCROLL_TO_TOP</span>
+          </button>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Social Channels Styled as Terminal Endpoints -->
+        <div class="footer-social-wrapper">
+          <h3 class="social-header-title text-cyan">&gt; CONNECT_CHANNELS --remote-endpoints</h3>
+          <div class="social-links-grid">
+            <!-- GitHub Endpoint -->
+            <a href="https://github.com/yashwanth" target="_blank" rel="noopener noreferrer" class="social-term-card" aria-label="GitHub Profile">
+              <span class="social-protocol text-neon-green">git://</span>
+              <span class="social-platform">github.com</span>
+              <span class="social-handle text-dim">/yashwanth</span>
+              <span class="social-arrow">↗</span>
+            </a>
+
+            <!-- LinkedIn Endpoint -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-term-card" aria-label="LinkedIn Profile">
+              <span class="social-protocol text-cyan">https://</span>
+              <span class="social-platform">linkedin.com</span>
+              <span class="social-handle text-dim">/in/yashwanth</span>
+              <span class="social-arrow">↗</span>
+            </a>
+
+            <!-- X / Twitter Endpoint -->
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-term-card" aria-label="X (Twitter) Profile">
+              <span class="social-protocol text-neon-green">https://</span>
+              <span class="social-platform">x.com</span>
+              <span class="social-handle text-dim">/@yashwanth_dev</span>
+              <span class="social-arrow">↗</span>
+            </a>
+
+            <!-- Direct Email Endpoint -->
+            <a href="mailto:yashwanth@example.com" class="social-term-card" aria-label="Send direct email">
+              <span class="social-protocol text-cyan">mailto:</span>
+              <span class="social-platform">yashwanth</span>
+              <span class="social-handle text-dim">@engineer.dev</span>
+              <span class="social-arrow">✉</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Bottom Copyright & Real-time Telemetry -->
+        <div class="footer-bottom-row">
+          <p class="copyright-line">
+            © 2026 YASHWANTH • ARCHITECTED WITH FUTURISTIC TERMINAL AESTHETICS • ALL RIGHTS RESERVED
+          </p>
+          <div class="telemetry-badges">
+            <span class="t-badge"><span class="badge-dot dot-green"></span> SYSTEM: NOMINAL</span>
+            <span class="t-badge"><span class="badge-dot dot-cyan"></span> CIPHER: AES-256</span>
+            <span class="t-badge">UPTIME: 99.99%</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+/**
+ * PIXEL ART VERTICAL NAVBAR INTERACTION & SOUND ENGINE
+ * Built for Yashwanth's Portfolio
+ */
+
+(function () {
+  'use strict';
+
+  // State Management
+  // State Management
+  const state = {
+    soundEnabled: true,
+    crtEnabled: true,
+    glassEnabled: true,
+    themePreference: 'auto', // 'auto' | 'dark' | 'light'
+    isCollapsed: false,
+    isMobileMenuOpen: false,
+    audioCtx: null
+  };
+
+  // DOM Elements
+  const navbar = document.getElementById('retroNavbar');
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const collapseToggleBtn = document.getElementById('collapseToggleBtn');
+  const soundToggleBtn = document.getElementById('soundToggleBtn');
+  const mobileSoundToggle = document.getElementById('mobileSoundToggle');
+  const crtToggleBtn = document.getElementById('crtToggleBtn');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navBackdrop = document.getElementById('navBackdrop');
+  const mobileTopbar = document.querySelector('.mobile-topbar');
+  const retroClock = document.getElementById('retroClock');
+  const chatForm = document.getElementById('chatForm');
+  const chatInput = document.getElementById('chatInput');
+  const chatLog = document.getElementById('chatLog');
+  const contactForm = document.getElementById('contactForm');
+
+  // Hero Section Night Mode & Glassmorphism Controls
+  const themeDayBtn = document.getElementById('themeDayBtn');
+  const themeNightBtn = document.getElementById('themeNightBtn');
+  const themeAutoBtn = document.getElementById('themeAutoBtn');
+  const sysThemeIndicator = document.getElementById('sysThemeIndicator');
+  const glassToggleBtn = document.getElementById('glassToggleBtn');
+  const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+  // ==========================================================================
+  // 1. 8-BIT SYNTHESIZER AUDIO ENGINE (Web Audio API)
+  // ==========================================================================
+
+  function getAudioContext() {
+    if (!state.audioCtx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        state.audioCtx = new AudioCtx();
+      }
+    }
+    if (state.audioCtx && state.audioCtx.state === 'suspended') {
+      state.audioCtx.resume();
+    }
+    return state.audioCtx;
+  }
+
+  // Play Retro Square-Wave Blip (Hover Sound)
+  function playHoverSound() {
+    if (!state.soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(620, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(740, ctx.currentTime + 0.04);
+
+      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.04);
+    } catch (e) {
+      console.warn('Audio playback error', e);
+    }
+  }
+
+  // Play Retro Select / Coin Chime (Click Sound)
+  function playSelectSound() {
+    if (!state.soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'square';
+      // Retro Two-tone Arpeggio
+      osc.frequency.setValueAtTime(987.77, now); // B5
+      osc.frequency.setValueAtTime(1318.51, now + 0.07); // E6
+
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.22);
+    } catch (e) {
+      console.warn('Audio playback error', e);
+    }
+  }
+
+  // Play Retro Toggle Sound
+  function playToggleSound(pitchUp = true) {
+    if (!state.soundEnabled) return;
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      const startFreq = pitchUp ? 350 : 650;
+      const endFreq = pitchUp ? 650 : 350;
+
+      osc.frequency.setValueAtTime(startFreq, now);
+      osc.frequency.exponentialRampToValueAtTime(endFreq, now + 0.12);
+
+      gain.gain.setValueAtTime(0.07, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } catch (e) {}
+  }
+
+  // Toggle Sound On/Off
+  function toggleSound() {
+    state.soundEnabled = !state.soundEnabled;
+    localStorage.setItem('retro_sound_enabled', state.soundEnabled ? 'true' : 'false');
+
+    const label = state.soundEnabled ? 'SFX: ON' : 'SFX: OFF';
+    const icon = state.soundEnabled ? '🔊' : '🔇';
+
+    if (soundToggleBtn) {
+      soundToggleBtn.setAttribute('aria-pressed', state.soundEnabled ? 'true' : 'false');
+      soundToggleBtn.querySelector('.btn-label').textContent = label;
+      soundToggleBtn.querySelector('.btn-icon').textContent = icon;
+    }
+
+    if (mobileSoundToggle) {
+      mobileSoundToggle.querySelector('.icon-sound').textContent = icon;
+    }
+
+    if (state.soundEnabled) playSelectSound();
+  }
+
+  // ==========================================================================
+  // 1B. NIGHT MODE THEME ENGINE (CSS Media Queries & Manual Overrides)
+  // ==========================================================================
+
+  function updateSystemThemeIndicator() {
+    const isDark = colorSchemeQuery.matches;
+    if (sysThemeIndicator) {
+      sysThemeIndicator.textContent = isDark ? 'SYS: DARK' : 'SYS: LIGHT';
+      sysThemeIndicator.style.color = isDark ? 'var(--color-green)' : 'var(--color-gold)';
+    }
+  }
+
+  function applyTheme(mode, playAudio = true) {
+    state.themePreference = mode;
+    localStorage.setItem('retro_theme_preference', mode);
+
+    [themeDayBtn, themeNightBtn, themeAutoBtn].forEach(btn => {
+      if (btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    if (mode === 'auto') {
+      // Remove manual override so pure CSS @media (prefers-color-scheme) rules apply
+      document.documentElement.removeAttribute('data-theme');
+      if (themeAutoBtn) {
+        themeAutoBtn.classList.add('active');
+        themeAutoBtn.setAttribute('aria-pressed', 'true');
+      }
+    } else if (mode === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (themeNightBtn) {
+        themeNightBtn.classList.add('active');
+        themeNightBtn.setAttribute('aria-pressed', 'true');
+      }
+    } else if (mode === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      if (themeDayBtn) {
+        themeDayBtn.classList.add('active');
+        themeDayBtn.setAttribute('aria-pressed', 'true');
+      }
+    }
+
+    updateSystemThemeIndicator();
+    if (playAudio) {
+      playSelectSound();
+    }
+  }
+
+  // ==========================================================================
+  // 1C. FROSTED GLASSMORPHISM TOGGLE ENGINE
+  // ==========================================================================
+
+  function toggleGlassmorphism(playAudio = true) {
+    state.glassEnabled = !state.glassEnabled;
+    document.body.classList.toggle('glass-disabled', !state.glassEnabled);
+    localStorage.setItem('retro_glass_enabled', state.glassEnabled ? 'true' : 'false');
+
+    if (glassToggleBtn) {
+      glassToggleBtn.classList.toggle('active', state.glassEnabled);
+      glassToggleBtn.setAttribute('aria-pressed', state.glassEnabled ? 'true' : 'false');
+      const textSpan = glassToggleBtn.querySelector('.glass-btn-text');
+      if (textSpan) {
+        textSpan.textContent = state.glassEnabled ? 'GLASS: ON' : 'GLASS: OFF';
+      }
+    }
+
+    if (playAudio) {
+      playToggleSound(state.glassEnabled);
+    }
+  }
+
+  // ==========================================================================
+  // 2. CRT SCANLINE EFFECT TOGGLE
+  // ==========================================================================
+
+  function toggleCRT() {
+    state.crtEnabled = !state.crtEnabled;
+    document.body.classList.toggle('crt-enabled', state.crtEnabled);
+    localStorage.setItem('retro_crt_enabled', state.crtEnabled ? 'true' : 'false');
+
+    if (crtToggleBtn) {
+      crtToggleBtn.setAttribute('aria-pressed', state.crtEnabled ? 'true' : 'false');
+      crtToggleBtn.querySelector('.btn-label').textContent = state.crtEnabled ? 'CRT: ON' : 'CRT: OFF';
+      crtToggleBtn.querySelector('.btn-icon').textContent = state.crtEnabled ? '📺' : '🚫';
+    }
+
+    playToggleSound(state.crtEnabled);
+  }
+
+  // ==========================================================================
+  // 3. DESKTOP SIDEBAR COLLAPSE / EXPAND
+  // ==========================================================================
+
+  function toggleSidebarCollapse() {
+    state.isCollapsed = !state.isCollapsed;
+    navbar.classList.toggle('collapsed', state.isCollapsed);
+    localStorage.setItem('retro_navbar_collapsed', state.isCollapsed ? 'true' : 'false');
+
+    if (collapseToggleBtn) {
+      collapseToggleBtn.setAttribute('aria-label', state.isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar');
+      const collapseText = collapseToggleBtn.querySelector('.collapse-text');
+      if (collapseText) {
+        collapseText.textContent = state.isCollapsed ? 'EXPAND' : 'COLLAPSE';
+      }
+    }
+
+    playToggleSound(!state.isCollapsed);
+  }
+
+  // ==========================================================================
+  // 4. MOBILE DRAWER NAVIGATION
+  // ==========================================================================
+
+  function openMobileMenu() {
+    state.isMobileMenuOpen = true;
+    navbar.classList.add('mobile-open');
+    navBackdrop.classList.add('active');
+    mobileTopbar.classList.add('menu-open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    playSelectSound();
+
+    // Focus first navigation item
+    const firstActive = navbar.querySelector('.nav-link.active') || navLinks[0];
+    if (firstActive) firstActive.focus();
+  }
+
+  function closeMobileMenu() {
+    if (!state.isMobileMenuOpen) return;
+    state.isMobileMenuOpen = false;
+    navbar.classList.remove('mobile-open');
+    navBackdrop.classList.remove('active');
+    mobileTopbar.classList.remove('menu-open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    mobileMenuBtn.focus();
+  }
+
+  function toggleMobileMenu() {
+    if (state.isMobileMenuOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  // ==========================================================================
+  // 5. SCROLLSPY & ACTIVE STATE TRACKING
+  // ==========================================================================
+
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+
+  function setActiveNavLink(sectionId) {
+    navLinks.forEach((link) => {
+      const matches = link.getAttribute('data-section') === sectionId;
+      if (matches) {
+        if (!link.classList.contains('active')) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        }
+      } else {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  // IntersectionObserver for buttery-smooth scroll detection
+  if ('IntersectionObserver' in window && sections.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveNavLink(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  }
+
+  // ==========================================================================
+  // 6. ACCESSIBLE KEYBOARD NAVIGATION (Arrow Keys, Home, End, Esc)
+  // ==========================================================================
+
+  navbar.addEventListener('keydown', (e) => {
+    const focusedElement = document.activeElement;
+    const currentIndex = navLinks.indexOf(focusedElement);
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = currentIndex < navLinks.length - 1 ? currentIndex + 1 : 0;
+      navLinks[nextIndex].focus();
+      playHoverSound();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = currentIndex > 0 ? currentIndex - 1 : navLinks.length - 1;
+      navLinks[prevIndex].focus();
+      playHoverSound();
+    } else if (e.key === 'Home' && currentIndex !== -1) {
+      e.preventDefault();
+      navLinks[0].focus();
+      playHoverSound();
+    } else if (e.key === 'End' && currentIndex !== -1) {
+      e.preventDefault();
+      navLinks[navLinks.length - 1].focus();
+      playHoverSound();
+    } else if (e.key === 'Escape' && state.isMobileMenuOpen) {
+      e.preventDefault();
+      closeMobileMenu();
+    }
+  });
+
+  // Global escape key listener
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && state.isMobileMenuOpen) {
+      closeMobileMenu();
+    }
+  });
+
+  // ==========================================================================
+  // 7. EVENT LISTENERS & HOVER / CLICK BEHAVIORS
+  // ==========================================================================
+
+  navLinks.forEach((link) => {
+    // Audio trigger on mouse hover
+    link.addEventListener('mouseenter', () => {
+      playHoverSound();
+    });
+
+    // Audio and state trigger on click
+    link.addEventListener('click', (e) => {
+      playSelectSound();
+      const targetId = link.getAttribute('data-section');
+      setActiveNavLink(targetId);
+
+      // On mobile, close sidebar upon clicking a link
+      if (window.innerWidth <= 768) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Toggle buttons
+  if (collapseToggleBtn) {
+    collapseToggleBtn.addEventListener('click', toggleSidebarCollapse);
+  }
+
+  if (soundToggleBtn) {
+    soundToggleBtn.addEventListener('click', toggleSound);
+  }
+
+  if (mobileSoundToggle) {
+    mobileSoundToggle.addEventListener('click', toggleSound);
+  }
+
+  if (crtToggleBtn) {
+    crtToggleBtn.addEventListener('click', toggleCRT);
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', closeMobileMenu);
+  }
+
+  // Night Mode Theme & Glassmorphism button listeners
+  if (themeDayBtn) themeDayBtn.addEventListener('click', () => applyTheme('light'));
+  if (themeNightBtn) themeNightBtn.addEventListener('click', () => applyTheme('dark'));
+  if (themeAutoBtn) themeAutoBtn.addEventListener('click', () => applyTheme('auto'));
+  if (glassToggleBtn) glassToggleBtn.addEventListener('click', () => toggleGlassmorphism());
+
+  // Listen to OS / Browser default theme changes via CSS media query
+  colorSchemeQuery.addEventListener('change', (e) => {
+    updateSystemThemeIndicator();
+    if (state.themePreference === 'auto') {
+      playToggleSound(e.matches);
+    }
+  });
+
+  // Hover sound for all pixel buttons and mini buttons
+  document.querySelectorAll('.pixel-btn, .pixel-btn-icon, .retro-control-btn, .pixel-mini-btn').forEach((btn) => {
+    btn.addEventListener('mouseenter', playHoverSound);
+  });
+
+  // ==========================================================================
+  // 8. REAL-TIME RETRO DIGITAL CLOCK
+  // ==========================================================================
+
+  function updateClock() {
+    if (!retroClock) return;
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    retroClock.textContent = `${hours}:${minutes}:${seconds}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // ==========================================================================
+  // 9. INTERACTIVE DEMO ACTIONS (Chat & Contact Form Feedback)
+  // ==========================================================================
+
+  if (chatForm && chatInput && chatLog) {
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      playSelectSound();
+
+      // Add user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user-msg';
+      userMsg.innerHTML = `<span class="msg-sender">[YOU]:</span> <span class="msg-text">${escapeHtml(text)}</span>`;
+      chatLog.appendChild(userMsg);
+      chatInput.value = '';
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      // Simulate NPC response after delay
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot-msg';
+        const responses = [
+          "Quest objective updated: Explore all 8 sections in the vertical navbar!",
+          "Great question! Yashwanth's inventory is loaded with full-stack skills.",
+          "Check out the Projects tab for retro code treasures!",
+          "HP and MP are at full capacity. Ready for production deployment!"
+        ];
+        const randomResp = responses[Math.floor(Math.random() * responses.length)];
+        botMsg.innerHTML = `<span class="msg-sender">[NPC BOT]:</span> <span class="msg-text">${randomResp}</span>`;
+        chatLog.appendChild(botMsg);
+        chatLog.scrollTop = chatLog.scrollHeight;
+        playHoverSound();
+      }, 600);
+    });
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      playSelectSound();
+      alert('★ QUEST TRANSMISSION SENT! Yashwanth will receive your frequency coordinates shortly.');
+      contactForm.reset();
+    });
+  }
+
+  function escapeHtml(string) {
+    const div = document.createElement('div');
+    div.textContent = string;
+    return div.innerHTML;
+  }
+
+  // Restore saved preferences
+  const savedSound = localStorage.getItem('retro_sound_enabled');
+  if (savedSound === 'false') {
+    toggleSound();
+  }
+
+  const savedCRT = localStorage.getItem('retro_crt_enabled');
+  if (savedCRT === 'false') {
+    toggleCRT();
+  }
+
+  const savedCollapsed = localStorage.getItem('retro_navbar_collapsed');
+  if (savedCollapsed === 'true' && window.innerWidth > 768) {
+    toggleSidebarCollapse();
+  }
+
+  // Restore saved theme preference (Default to auto which uses CSS media query)
+  const savedTheme = localStorage.getItem('retro_theme_preference') || 'auto';
+  applyTheme(savedTheme, false);
+
+  // Restore saved glassmorphism preference
+  const savedGlass = localStorage.getItem('retro_glass_enabled');
+  if (savedGlass === 'false') {
+    toggleGlassmorphism(false);
+  }
+})();

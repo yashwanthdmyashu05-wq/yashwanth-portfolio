@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel Nav &amp; Portfolio Demo | Yashwanth</title>
+  <meta name="description" content="Accessible, responsive vertical navigation bar with authentic pixel art aesthetic, 8-bit audio feedback, and full keyboard navigation.">
+
+  <!-- Retro Pixel & Modern Legible Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./Pixel Nav &amp; Portfolio Demo _ Yashwanth_files/css2" rel="stylesheet">
+
+  <link rel="stylesheet" href="./Pixel Nav &amp; Portfolio Demo _ Yashwanth_files/style.css">
+</head>
+
+<body class="">
+  <!-- Accessibility Skip Link -->
+  <a href="http://127.0.0.1:5500/index.html#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- CRT Screen Overlay (Optional toggleable) -->
+  <div class="crt-scanlines" aria-hidden="true"></div>
+  <div class="crt-vignette" aria-hidden="true"></div>
+
+  <!-- Mobile Top Bar (Visible only on mobile/tablet) -->
+  <header class="mobile-topbar" aria-label="Mobile Navigation Bar">
+    <div class="mobile-brand">
+      <span class="pixel-star" aria-hidden="true">★</span>
+      <span class="brand-text">YASHWANTH.OS</span>
+    </div>
+
+    <div class="mobile-actions">
+      <button id="mobileSoundToggle" class="pixel-btn-icon" aria-label="Toggle Sound Effects" title="Toggle 8-bit Audio">
+        <span class="icon-sound" aria-hidden="true">🔇</span>
+      </button>
+      <button id="mobileMenuBtn" class="pixel-btn-icon" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="retroNavbar">
+        <span class="pixel-hamburger" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div id="navBackdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+  <!-- The Main Vertical Navigation Bar -->
+  <nav id="retroNavbar" class="retro-sidebar" aria-label="Main Navigation">
+    <!-- Sidebar Header: Player Profile Card -->
+    <div class="sidebar-header">
+      <div class="player-card">
+        <div class="avatar-frame">
+          <img src="./Pixel Nav &amp; Portfolio Demo _ Yashwanth_files/WhatsApp Image 2026-10-07 at 12.37.15.jpeg" alt="Yashwanth Avatar" class="player-avatar" onerror="this.src='https://api.dicebear.com/7.x/pixel-art/svg?seed=Yashwanth'">
+          <span class="status-indicator" title="Player Status: Online" aria-label="Status: Online"></span>
+        </div>
+        <div class="player-info">
+          <div class="player-tag">
+            <span class="player-name">YASHWANTH</span>
+            <span class="player-lvl">LV.99</span>
+          </div>
+          <span class="player-class">DEV ARCHITECT</span>
+        </div>
+      </div>
+
+      <!-- Player HUD Bars (HP & MP) -->
+      <div class="hud-bars" aria-hidden="true">
+        <div class="hud-bar-group">
+          <span class="hud-label">HP</span>
+          <div class="pixel-progress-track">
+            <div class="pixel-progress-fill hp-fill" style="width: 95%;"></div>
+          </div>
+          <span class="hud-val">950/950</span>
+        </div>
+        <div class="hud-bar-group">
+          <span class="hud-label">MP</span>
+          <div class="pixel-progress-track">
+            <div class="pixel-progress-fill mp-fill" style="width: 82%;"></div>
+          </div>
+          <span class="hud-val">820/999</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Menu Items -->
+    <div class="nav-scroll-container">
+      <div class="nav-category-header" aria-hidden="true">
+        <span class="category-dash">---</span>
+        <span class="category-title">QUEST LOG</span>
+        <span class="category-dash">---</span>
+      </div>
+
+      <ul class="nav-menu" role="menu">
+        <!-- 1. Home -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#home" class="nav-link active" role="menuitem" data-section="home" aria-current="page">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Castle / Home Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="10" y="2" width="4" height="2" fill="currentColor"></rect>
+                <rect x="8" y="4" width="8" height="2" fill="currentColor"></rect>
+                <rect x="6" y="6" width="12" height="2" fill="currentColor"></rect>
+                <rect x="4" y="8" width="16" height="2" fill="currentColor"></rect>
+                <rect x="2" y="10" width="20" height="2" fill="currentColor"></rect>
+                <rect x="4" y="12" width="16" height="10" fill="currentColor"></rect>
+                <rect x="10" y="14" width="4" height="8" fill="var(--bg-card)"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Home</span>
+            <span class="nav-badge hot-badge" aria-hidden="true">01</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Home [Spawn Point]</span>
+        </li>
+
+        <!-- 2. About Me -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#about" class="nav-link" role="menuitem" data-section="about">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Hero / User Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="8" y="2" width="8" height="2" fill="currentColor"></rect>
+                <rect x="6" y="4" width="12" height="6" fill="currentColor"></rect>
+                <rect x="8" y="10" width="8" height="2" fill="currentColor"></rect>
+                <rect x="6" y="12" width="12" height="4" fill="currentColor"></rect>
+                <rect x="4" y="14" width="2" height="6" fill="currentColor"></rect>
+                <rect x="18" y="14" width="2" height="6" fill="currentColor"></rect>
+                <rect x="6" y="16" width="4" height="6" fill="currentColor"></rect>
+                <rect x="14" y="16" width="4" height="6" fill="currentColor"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">About Me</span>
+            <span class="nav-badge info-badge" aria-hidden="true">BIO</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">About Me [Character Sheet]</span>
+        </li>
+
+        <!-- 3. Skills -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#skills" class="nav-link" role="menuitem" data-section="skills">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Magic Potion / Alchemy Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="9" y="2" width="6" height="2" fill="currentColor"></rect>
+                <rect x="10" y="4" width="4" height="4" fill="currentColor"></rect>
+                <rect x="8" y="8" width="8" height="2" fill="currentColor"></rect>
+                <rect x="6" y="10" width="12" height="4" fill="currentColor"></rect>
+                <rect x="4" y="14" width="16" height="6" fill="currentColor"></rect>
+                <rect x="6" y="20" width="12" height="2" fill="currentColor"></rect>
+                <!-- Glow bubbling inside -->
+                <rect x="8" y="14" width="2" height="2" fill="var(--color-primary)"></rect>
+                <rect x="14" y="16" width="2" height="2" fill="var(--color-primary)"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Skills</span>
+            <span class="nav-badge max-badge" aria-hidden="true">MAX</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Skills [Skill Tree]</span>
+        </li>
+
+        <!-- 4. Timeline -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#timeline" class="nav-link" role="menuitem" data-section="timeline">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Hourglass / Chrono Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="4" y="2" width="16" height="2" fill="currentColor"></rect>
+                <rect x="4" y="4" width="2" height="4" fill="currentColor"></rect>
+                <rect x="18" y="4" width="2" height="4" fill="currentColor"></rect>
+                <rect x="6" y="8" width="4" height="2" fill="currentColor"></rect>
+                <rect x="14" y="8" width="4" height="2" fill="currentColor"></rect>
+                <rect x="10" y="10" width="4" height="4" fill="currentColor"></rect>
+                <rect x="6" y="14" width="4" height="2" fill="currentColor"></rect>
+                <rect x="14" y="14" width="4" height="2" fill="currentColor"></rect>
+                <rect x="4" y="16" width="2" height="4" fill="currentColor"></rect>
+                <rect x="18" y="16" width="2" height="4" fill="currentColor"></rect>
+                <rect x="4" y="20" width="16" height="2" fill="currentColor"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Timeline</span>
+            <span class="nav-badge exp-badge" aria-hidden="true">EXP</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Timeline [History &amp; Logs]</span>
+        </li>
+
+        <!-- 5. Projects -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#projects" class="nav-link" role="menuitem" data-section="projects">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Game Cartridge / Disk Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="4" y="2" width="16" height="2" fill="currentColor"></rect>
+                <rect x="2" y="4" width="20" height="16" fill="currentColor"></rect>
+                <rect x="6" y="6" width="12" height="8" fill="var(--bg-card)"></rect>
+                <rect x="8" y="8" width="4" height="4" fill="var(--color-accent)"></rect>
+                <rect x="4" y="18" width="16" height="2" fill="var(--bg-card)"></rect>
+                <rect x="6" y="20" width="12" height="2" fill="currentColor"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Projects</span>
+            <span class="nav-badge alert-badge" aria-hidden="true">NEW</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Projects [Game Library]</span>
+        </li>
+
+        <!-- 6. Testimonials -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#testimonials" class="nav-link" role="menuitem" data-section="testimonials">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Heart / Praise Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="6" y="4" width="4" height="2" fill="currentColor"></rect>
+                <rect x="14" y="4" width="4" height="2" fill="currentColor"></rect>
+                <rect x="4" y="6" width="8" height="4" fill="currentColor"></rect>
+                <rect x="12" y="6" width="8" height="4" fill="currentColor"></rect>
+                <rect x="4" y="10" width="16" height="4" fill="currentColor"></rect>
+                <rect x="6" y="14" width="12" height="2" fill="currentColor"></rect>
+                <rect x="8" y="16" width="8" height="2" fill="currentColor"></rect>
+                <rect x="10" y="18" width="4" height="2" fill="currentColor"></rect>
+                <rect x="11" y="20" width="2" height="2" fill="currentColor"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Testimonials</span>
+            <span class="nav-badge heart-badge" aria-hidden="true">★5</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Testimonials [NPC Praise]</span>
+        </li>
+
+        <!-- 7. Chat -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#chat" class="nav-link" role="menuitem" data-section="chat">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Speech Bubble / Terminal Dialog -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="4" y="4" width="16" height="2" fill="currentColor"></rect>
+                <rect x="2" y="6" width="20" height="10" fill="currentColor"></rect>
+                <rect x="4" y="16" width="16" height="2" fill="currentColor"></rect>
+                <rect x="4" y="18" width="4" height="2" fill="currentColor"></rect>
+                <rect x="2" y="20" width="4" height="2" fill="currentColor"></rect>
+                <!-- Dots inside bubble -->
+                <rect x="6" y="10" width="2" height="2" fill="var(--bg-card)"></rect>
+                <rect x="11" y="10" width="2" height="2" fill="var(--bg-card)"></rect>
+                <rect x="16" y="10" width="2" height="2" fill="var(--bg-card)"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Chat</span>
+            <span class="nav-badge count-badge" aria-label="3 new messages">3</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Chat [NPC Dialogue]</span>
+        </li>
+
+        <!-- 8. Contact -->
+        <li class="nav-item" role="none">
+          <a href="http://127.0.0.1:5500/index.html#contact" class="nav-link" role="menuitem" data-section="contact">
+            <span class="pixel-pointer" aria-hidden="true">►</span>
+            <span class="nav-icon" aria-hidden="true">
+              <!-- Pixel Mail / Pigeon Icon -->
+              <svg viewBox="0 0 24 24" class="pixel-svg">
+                <rect x="2" y="4" width="20" height="2" fill="currentColor"></rect>
+                <rect x="2" y="6" width="2" height="12" fill="currentColor"></rect>
+                <rect x="20" y="6" width="2" height="12" fill="currentColor"></rect>
+                <rect x="4" y="6" width="2" height="2" fill="currentColor"></rect>
+                <rect x="18" y="6" width="2" height="2" fill="currentColor"></rect>
+                <rect x="6" y="8" width="2" height="2" fill="currentColor"></rect>
+                <rect x="16" y="8" width="2" height="2" fill="currentColor"></rect>
+                <rect x="8" y="10" width="2" height="2" fill="currentColor"></rect>
+                <rect x="14" y="10" width="2" height="2" fill="currentColor"></rect>
+                <rect x="10" y="12" width="4" height="2" fill="currentColor"></rect>
+                <rect x="2" y="18" width="20" height="2" fill="currentColor"></rect>
+              </svg>
+            </span>
+            <span class="nav-text">Contact</span>
+            <span class="nav-badge mail-badge" aria-hidden="true">@</span>
+          </a>
+          <span class="nav-tooltip" role="tooltip">Contact [Send Transmission]</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Sidebar Bottom: Controls & System Diagnostics -->
+    <div class="sidebar-footer">
+      <div class="footer-toggles">
+        <!-- 8-Bit Sound FX Toggle -->
+        <button id="soundToggleBtn" class="retro-control-btn" title="Toggle 8-bit Audio (Sound FX)" aria-pressed="false">
+          <span class="btn-icon" aria-hidden="true">🔇</span>
+          <span class="btn-label">SFX: OFF</span>
+        </button>
+
+        <!-- CRT Scanline Filter Toggle -->
+        <button id="crtToggleBtn" class="retro-control-btn" title="Toggle CRT Scanline Effect" aria-pressed="false">
+          <span class="btn-icon" aria-hidden="true">🚫</span>
+          <span class="btn-label">CRT: OFF</span>
+        </button>
+      </div>
+
+      <!-- Collapse/Expand Sidebar Toggle (Desktop) -->
+      <button id="collapseToggleBtn" class="retro-collapse-btn" title="Toggle Compact Mode" aria-label="Toggle Compact Sidebar">
+        <span class="collapse-icon" aria-hidden="true">◄◄</span>
+        <span class="collapse-text">COLLAPSE</span>
+      </button>
+
+      <!-- System Status Bar -->
+      <div class="system-status" aria-hidden="true">
+        <span class="fps-meter">60 FPS</span>
+        <span class="clock-display" id="retroClock">14:31:28</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Showcase (Demonstrating navbar behavior with scrollspy) -->
+  <main id="main-content" class="main-wrapper">
+    <!-- Hero / Home Section -->
+    <section id="home" class="content-section hero-section">
+      <!-- Background Image Showcase Container with Retro Pixel Framing -->
+      <div class="pixel-box hero-box" style="--hero-bg: url('zita-portfolio-6532.webp');">
+        <!-- Hero Window Header with Theme and Glassmorphism Toggles -->
+        <div class="box-header hero-window-header">
+          <div class="header-left-meta">
+            <span class="terminal-title">★ STAGE 1 // HERO_ZONE.EXE</span>
+            <span class="version-chip" aria-hidden="true">BUILD 2026.1</span>
+          </div>
+
+          <!-- Night Mode & Glassmorphism Interactive Controls -->
+          <div class="hero-toggles-bar" role="toolbar" aria-label="Visual Appearance Controls">
+            <!-- Night Mode (Day / Night / Auto via CSS Media Queries) -->
+            <div class="theme-control-group" role="group" aria-label="Night Mode Theme Selector">
+              <span class="control-legend" aria-hidden="true">THEME:</span>
+              <button id="themeDayBtn" class="pixel-mini-btn" title="Switch to Day Mode (Light Theme)" aria-label="Switch to Day Mode" aria-pressed="false">
+                <span class="btn-glyph" aria-hidden="true">☀️</span>
+                <span class="btn-text">DAY</span>
+              </button>
+              <button id="themeNightBtn" class="pixel-mini-btn active" title="Switch to Night Mode (Dark Theme)" aria-label="Switch to Night Mode" aria-pressed="true">
+                <span class="btn-glyph" aria-hidden="true">🌙</span>
+                <span class="btn-text">NIGHT</span>
+              </button>
+              <button id="themeAutoBtn" class="pixel-mini-btn" title="Follow System Theme (Detected via CSS media query: prefers-color-scheme)" aria-label="Follow System Theme" aria-pressed="false">
+                <span class="btn-glyph" aria-hidden="true">⚙️</span>
+                <span class="btn-text">AUTO</span>
+              </button>
+              <span id="sysThemeIndicator" class="sys-detect-tag" title="Detected by CSS @media (prefers-color-scheme)" style="color: var(--color-gold);">SYS: LIGHT</span>
+            </div>
+
+            <!-- Glassmorphism Frosted Glass Toggle -->
+            <div class="glass-control-group" role="group" aria-label="Glassmorphism Effect Selector">
+              <button id="glassToggleBtn" class="pixel-mini-btn glass-btn active" title="Toggle Glassmorphism Blur Effect" aria-pressed="true">
+                <span class="btn-glyph" aria-hidden="true">✨</span>
+                <span class="glass-btn-text">GLASS: ON</span>
+              </button>
+            </div>
+
+            <!-- Retro Window Buttons -->
+            <div class="window-buttons" aria-hidden="true">
+              <span class="win-btn win-min"></span>
+              <span class="win-btn win-max"></span>
+              <span class="win-btn win-close"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Body with Background Image & Frosted Glassmorphism Card -->
+        <div class="hero-stage-backdrop">
+          <!-- Translucent Frosted Glassmorphic Overlay Card -->
+          <div class="hero-glass-card">
+            <!-- Header Badge -->
+            <div class="hero-badge-row">
+              <span class="hero-badge">★ PLAYER 1 HAS ENTERED THE REALM ★</span>
+              <span class="hero-ping-badge" aria-hidden="true">
+                <span class="ping-dot"></span> 24ms PING
+              </span>
+            </div>
+
+            <!-- Welcome Title -->
+            <h1 class="hero-title">
+              <span class="hero-title-sub">WELCOME TO</span>
+              <span class="hero-title-main">YASHWANTH'S REALM</span>
+            </h1>
+
+            <!-- Brief Compelling Tagline -->
+            <p class="hero-tagline">
+              Architecting high-performance full-stack web applications, 8-bit interactive worlds, and accessible digital journeys with pixel-perfect precision.
+            </p>
+
+            <!-- Character Dialogue Box (Pixel Art RPG Style) -->
+            <div class="hero-npc-dialogue">
+              <div class="dialogue-avatar-box">
+                <img src="./Pixel Nav &amp; Portfolio Demo _ Yashwanth_files/WhatsApp Image 2026-10-07 at 12.37.15.jpeg" alt="Yashwanth portrait" class="dialogue-avatar" onerror="this.src='https://api.dicebear.com/7.x/pixel-art/svg?seed=Yashwanth'">
+                <span class="avatar-lvl-tag">LV.99</span>
+              </div>
+              <div class="dialogue-bubble">
+                <div class="bubble-header">
+                  <span class="speaker-name">YASHWANTH // ARCHITECT</span>
+                  <span class="dialogue-blip" aria-hidden="true">● TRANSMITTING</span>
+                </div>
+                <p class="bubble-message">
+                  “Greetings, traveler! Explore my quest log on the vertical navigation bar, or test out the Night Mode and Glassmorphism toggles above!”
+                </p>
+              </div>
+            </div>
+
+            <!-- Pixel Feature Chips -->
+            <div class="feature-tags">
+              <span class="pixel-chip">🌙 CSS MEDIA QUERY NIGHT MODE</span>
+              <span class="pixel-chip">✨ FROSTED GLASSMORPHISM</span>
+              <span class="pixel-chip">🎮 8-BIT AUDIO SYNTHESIZER</span>
+              <span class="pixel-chip">📱 FULLY RESPONSIVE SIDEBAR</span>
+              <span class="pixel-chip">♿ WCAG AAA ACCESSIBLE</span>
+            </div>
+
+            <!-- Call-To-Action Row -->
+            <div class="action-row">
+              <a href="http://127.0.0.1:5500/index.html#projects" class="pixel-btn primary-btn">
+                <span>EXPLORE PROJECTS</span>
+                <span class="btn-arrow" aria-hidden="true">►</span>
+              </a>
+              <a href="http://127.0.0.1:5500/index.html#skills" class="pixel-btn secondary-btn">
+                <span>SKILL TREE</span>
+              </a>
+              <a href="http://127.0.0.1:5500/index.html#contact" class="pixel-btn accent-btn">
+                <span>CONTACT GUILD</span>
+                <span class="btn-arrow" aria-hidden="true">✉</span>
+              </a>
+            </div>
+
+            <!-- Quick Player Stat Bar Footer inside Hero -->
+            <div class="hero-stat-ribbon" aria-label="Player attributes summary">
+              <div class="ribbon-item">
+                <span class="ribbon-key">CLASS:</span>
+                <span class="ribbon-val">FULL-STACK DEV</span>
+              </div>
+              <div class="ribbon-item">
+                <span class="ribbon-key">MANA:</span>
+                <span class="ribbon-val">INFINITE COFFEE ☕</span>
+              </div>
+              <div class="ribbon-item">
+                <span class="ribbon-key">QUEST STATUS:</span>
+                <span class="ribbon-val highlight-green">AVAILABLE FOR HIRE</span>
+              </div>
+              <div class="ribbon-item">
+                <span class="ribbon-key">LOCATION:</span>
+                <span class="ribbon-val">BANGALORE, IN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="content-section">
+      <div class="pixel-box">
+        <div class="box-header">
+          <span class="terminal-title">CHARACTER_SHEET // STATS &amp; BIO</span>
+        </div>
+        <div class="box-body">
+          <h2 class="section-title">ABOUT ME</h2>
+          <div class="about-grid">
+            <div class="pixel-card bio-card">
+              <h3 class="card-title">CHARACTER PROFILE</h3>
+              <p>Full-Stack Developer crafting high-performance, aesthetically captivating digital experiences. Equipped
+                with deep knowledge in modern web stacks, interactive UI design, and pixel-precision craft.</p>
+              <div class="stat-list">
+                <div class="stat-item"><span>CLASS:</span> <strong>Code Paladin</strong></div>
+                <div class="stat-item"><span>ALIGNMENT:</span> <strong>Clean Code Neutral</strong></div>
+                <div class="stat-item"><span>MANA:</span> <strong>Infinite Coffee ☕</strong></div>
+              </div>
+            </div>
+            <div class="pixel-card trait-card">
+              <h3 class="card-title">SPECIAL ABILITIES</h3>
+              <ul class="trait-list">
+                <li>⚔️ Pixel-Perfect UI Engineering</li>
+                <li>🛡️ Accessibility (A11y) &amp; Semantic Architecture</li>
+                <li>⚡ Performance Optimization &amp; Web Standards</li>
+                <li>🔮 Creative Front-End Micro-Interactions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="content-section">
+      <div class="pixel-box">
+        <div class="box-header">
+          <span class="terminal-title">SKILL_TREE // ABILITIES UNLOCKED</span>
+        </div>
+        <div class="box-body">
+          <h2 class="section-title">SKILLS &amp; TECH STACK</h2>
+          <div class="skills-grid">
+            <div class="skill-tile">
+              <div class="skill-icon">⚡</div>
+              <div class="skill-meta">
+                <span class="skill-name">HTML5 &amp; A11Y</span>
+                <span class="skill-lvl">LV.99</span>
+              </div>
+              <div class="skill-bar">
+                <div class="fill" style="width: 98%;"></div>
+              </div>
+            </div>
+            <div class="skill-tile">
+              <div class="skill-icon">🎨</div>
+              <div class="skill-meta">
+                <span class="skill-name">CSS3 &amp; PIXEL ART</span>
+                <span class="skill-lvl">LV.95</span>
+              </div>
+              <div class="skill-bar">
+                <div class="fill" style="width: 95%;"></div>
+              </div>
+            </div>
+            <div class="skill-tile">
+              <div class="skill-icon">📜</div>
+              <div class="skill-meta">
+                <span class="skill-name">JAVASCRIPT (ES6+)</span>
+                <span class="skill-lvl">LV.92</span>
+              </div>
+              <div class="skill-bar">
+                <div class="fill" style="width: 92%;"></div>
+              </div>
+            </div>
+            <div class="skill-tile">
+              <div class="skill-icon">🛡️</div>
+              <div class="skill-meta">
+                <span class="skill-name">REACT / NEXT.JS</span>
+                <span class="skill-lvl">LV.88</span>
+              </div>
+              <div class="skill-bar">
+                <div class="fill" style="width: 88%;"></div>
+              </div>
+            </div>
+            <div class="skill-tile">
+              <div class="skill-icon">💎</div>
+              <div class="skill-meta">
+                <span class="skill-name">UI / UX ARCHITECTURE</span>
+                <span class="skill-lvl">LV.90</span>
+              </div>
+              <div class="skill-bar">
+                <div class="fill" style="width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-tile">
+              <div class="skill-icon">🚀</div>
+              <div class="skill-meta">
+                <span class="skill-name">NODE.JS &amp; APIS</span>
+                <span class="skill-lvl">LV.86</span>
+              </div>
+              <div class="skill-bar">
+                <div class="fill" style="width: 86%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="content-section">
+      <div class="pixel-box">
+        <div class="box-header">
+          <span class="terminal-title">QUEST_CHRONICLES // TIMELINE</span>
+        </div>
+        <div class="box-body">
+          <h2 class="section-title">EXP TIMELINE</h2>
+          <div class="timeline-container">
+            <div class="timeline-step">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">CHAPTER IV • PRESENT</span>
+                <h4>Senior Frontend &amp; Interactive Architect</h4>
+                <p>Architecting immersive web experiences, design systems, and robust accessible client-side
+                  architectures.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">CHAPTER III • 2024</span>
+                <h4>Creative Web &amp; Game UI Developer</h4>
+                <p>Engineered interactive canvas experiences, retro pixel web engines, and responsive dashboards.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">CHAPTER II • 2022</span>
+                <h4>Software Engineering Degree</h4>
+                <p>Graduated with honors in Computer Science, focusing on human-computer interaction and web algorithms.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="content-section">
+      <div class="pixel-box">
+        <div class="box-header">
+          <span class="terminal-title">DUNGEON_LOOT // PROJECTS</span>
+        </div>
+        <div class="box-body">
+          <h2 class="section-title">FEATURED PROJECTS</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-screen">
+                <span class="screen-glitch">ARCADE // 01</span>
+              </div>
+              <h3 class="project-title">Retro Game OS</h3>
+              <p>An 8-bit operating system simulation in browser with draggable pixel windows and sound synthesizer.</p>
+              <div class="card-tags"><span>HTML5</span><span>CSS GRID</span><span>WEB AUDIO</span></div>
+            </div>
+            <div class="project-card">
+              <div class="project-screen">
+                <span class="screen-glitch">DUNGEON // 02</span>
+              </div>
+              <h3 class="project-title">Pixel Quest Portfolio</h3>
+              <p>Top-down isometric portfolio explorer where visitors walk a character through work showcases.</p>
+              <div class="card-tags"><span>CANVAS</span><span>VANILLA JS</span><span>A11Y</span></div>
+            </div>
+            <div class="project-card">
+              <div class="project-screen">
+                <span class="screen-glitch">CYBER // 03</span>
+              </div>
+              <h3 class="project-title">Neon Cyber Terminal</h3>
+              <p>Interactive command line tool with live retro animations, themes, and sound feedback.</p>
+              <div class="card-tags"><span>TYPESCRIPT</span><span>CSS</span><span>TERMINAL</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="content-section">
+      <div class="pixel-box">
+        <div class="box-header">
+          <span class="terminal-title">PARTY_MEMBERS // TESTIMONIALS</span>
+        </div>
+        <div class="box-body">
+          <h2 class="section-title">NPC TESTIMONIALS</h2>
+          <div class="testimonials-grid">
+            <div class="dialogue-box">
+              <div class="npc-face">🧙‍♂️</div>
+              <div class="npc-dialogue">
+                <p>“Yashwanth forged our frontend from scratch. His attention to pixel aesthetics and accessibility made
+                  our guild legendary!”</p>
+                <span class="npc-author">— Gandalf_Code, Guild Master</span>
+              </div>
+            </div>
+            <div class="dialogue-box">
+              <div class="npc-face">🧝‍♀️</div>
+              <div class="npc-dialogue">
+                <p>“The most responsive and interactive user experience we have ever had. The retro audio feedback adds
+                  pure joy.”</p>
+                <span class="npc-author">— Elrond, Product Wizard</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. AI Chat Interface Section (Interactive AI Clone of Yashwanth) -->
+    <section id="chat" class="content-section">
+      <div class="pixel-box hacker-chat-box">
+        <div class="box-header">
+          <div class="chat-header-title">
+            <span class="terminal-title">TERMINAL // YASHWANTH_AI.SH [HACKER_SESSION_v2.4]</span>
+            <span class="ai-status-indicator" title="AI Model: Online &amp; Ready">
+              <span class="ping-dot"></span> NEURAL LINK: ACTIVE
+            </span>
+          </div>
+          <div class="window-buttons">
+            <button id="clearChatBtn" class="terminal-ctrl-btn" title="Clear terminal history" aria-label="Clear Chat Log">CLR</button>
+            <span class="win-btn win-min" aria-hidden="true"></span>
+            <span class="win-btn win-max" aria-hidden="true"></span>
+            <span class="win-btn win-close" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="box-body hacker-chat-body">
+          <div class="chat-intro-banner">
+            <pre class="ascii-art" aria-hidden="true"> ___   _  _______  _______  __   __  _     _  _______  __    _  _______  __   __ 
+|   | | ||   _   ||       ||  | |  || | _ | ||   _   ||  |  | ||       ||  | |  |
+|   |_| ||  |_|  ||  _____||  |_|  || || || ||  |_|  ||   |_| ||_     _||  |_|  |
+|      _||       || |_____ |       ||       ||       ||       |  |   |  |       |
+|     |_ |       ||_____  ||       ||       ||       ||  _    |  |   |  |   _   |
+|    _  ||   _   | _____| ||   _   ||   _   ||   _   || | |   |  |   |  |  | |  |
+|___| |_||__| |__||_______||__| |__||__| |__||__| |__||_|  |__|  |___|  |__| |__|
+            </pre>
+            <p class="terminal-welcome-text">
+              <span class="text-green">[SYSTEM READY]</span> Welcome to Yashwanth's AI Neural Proxy. Ask questions about tech stacks, experience, past projects, or hiring availability.
+            </p>
+          </div>
+
+          <!-- Quick Command Chips for Instant Interaction -->
+          <div class="quick-prompts-bar" aria-label="Quick AI prompt options">
+            <span class="quick-prompt-label">EXECUTE QUERY:</span>
+            <button type="button" class="quick-prompt-btn" data-query="What are your top programming skills?">⚡ Skills</button>
+            <button type="button" class="quick-prompt-btn" data-query="Tell me about your featured projects.">🎮 Projects</button>
+            <button type="button" class="quick-prompt-btn" data-query="Are you currently available for hire or freelance?">💼 Hire Status</button>
+            <button type="button" class="quick-prompt-btn" data-query="What is your background and experience?">📜 Experience</button>
+            <button type="button" class="quick-prompt-btn" data-query="How can I get in touch with you?">✉ Contact</button>
+          </div>
+
+          <!-- Chat Messages Display Terminal -->
+          <div class="pixel-chat-window" id="chatWindow" role="log" aria-live="polite" aria-label="Conversation with Yashwanth AI">
+            <div class="chat-log" id="chatLog">
+              <div class="chat-msg bot-msg">
+                <div class="msg-meta">
+                  <span class="msg-sender">[YASHWANTH_AI @ ARCHITECT]:</span>
+                  <span class="msg-time">BOOT // 00:01</span>
+                </div>
+                <div class="msg-text">
+                  Greetings human! I am an AI proxy modeled after Yashwanth. I have complete knowledge of his full-stack engineering stack, portfolio projects, and availability. How can I assist your quest today?
+                </div>
+              </div>
+            </div>
+
+            <!-- Typing Indicator (Hidden by default, shown during AI generation) -->
+            <div class="typing-indicator" id="typingIndicator" style="display: none;" aria-hidden="true">
+              <span class="typing-cursor">►</span>
+              <span class="typing-text">Yashwanth AI is compiling thoughts</span>
+              <span class="dot-flashing">...</span>
+            </div>
+          </div>
+
+          <!-- Terminal Input Row -->
+          <form class="hacker-input-form" id="chatForm">
+            <div class="input-prompt-prefix" aria-hidden="true">visitor@yashwanth-os:~$</div>
+            <input type="text" id="chatInput" class="terminal-input" placeholder="Ask Yashwanth AI anything (e.g., 'What tech stack do you use?')..." aria-label="Enter your message for Yashwanth AI" autocomplete="off" required="">
+            <button type="submit" class="pixel-btn primary-btn chat-send-btn" id="chatSendBtn" aria-label="Send Transmission">
+              <span>SEND</span>
+              <span class="btn-arrow" aria-hidden="true">↵</span>
+            </button>
+          </form>
+          <div class="terminal-footer-hint">
+            <span>PRO-TIP: Press [ENTER] to execute transmission • API Ready: Plug in OpenAI / Anthropic / Gemini</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact Form Section with Email API Functionality -->
+    <section id="contact" class="content-section">
+      <div class="pixel-box contact-box">
+        <div class="box-header">
+          <span class="terminal-title">TRANSMIT // DIRECT_DISPATCH.EXE</span>
+          <div class="window-buttons" aria-hidden="true">
+            <span class="win-btn win-min"></span>
+            <span class="win-btn win-max"></span>
+            <span class="win-btn win-close"></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="contact-header-content">
+            <h2 class="section-title">TRANSMIT MESSAGE</h2>
+            <p class="contact-subtext">
+              Have a quest proposal, collaborative opportunity, or freelance project? Send a transmission directly to Yashwanth's dispatch queue.
+            </p>
+          </div>
+
+          <!-- Confirmation Message Banner (Shown on Successful Submission) -->
+          <div id="contactConfirmationBanner" class="pixel-confirmation-banner" style="display: none;" role="status">
+            <div class="banner-icon" aria-hidden="true">★</div>
+            <div class="banner-body">
+              <h3 class="banner-title">TRANSMISSION RECEIVED &amp; CONFIRMED!</h3>
+              <p class="banner-desc" id="confirmationDesc">
+                Your message has been encoded and dispatched to Yashwanth's inbox via Email API. Expect a reply coordinates within 24 standard hours.
+              </p>
+              <button type="button" id="dismissConfirmationBtn" class="pixel-btn secondary-btn dismiss-btn">DISMISS</button>
+            </div>
+          </div>
+
+          <!-- Contact Form with High-Contrast Clear Submit Button -->
+          <form class="pixel-form" id="contactForm" novalidate="">
+            <div class="form-row-2col">
+              <div class="form-group">
+                <label for="contactName">
+                  <span class="label-icon" aria-hidden="true">👤</span> PLAYER CALLSIGN / NAME: <span class="required-star">*</span>
+                </label>
+                <input type="text" id="contactName" name="name" required="" placeholder="e.g. Elena Vance" autocomplete="name">
+                <span class="field-error-msg" id="nameError" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail">
+                  <span class="label-icon" aria-hidden="true">📡</span> FREQUENCY / EMAIL: <span class="required-star">*</span>
+                </label>
+                <input type="email" id="contactEmail" name="email" required="" placeholder="e.g. elena@blackmesa.org" autocomplete="email">
+                <span class="field-error-msg" id="emailError" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject">
+                <span class="label-icon" aria-hidden="true">🏷️</span> QUEST CATEGORY / SUBJECT:
+              </label>
+              <select id="contactSubject" name="subject" class="pixel-select">
+                <option value="Freelance Project">⚔️ New Project / Freelance Proposal</option>
+                <option value="Full-Time Role">💼 Full-Time Career Opportunity</option>
+                <option value="Collaboration">🔮 Technical Collaboration / Open Source</option>
+                <option value="Coffee &amp; Chat">☕ Casual Tech Chat &amp; Networking</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">
+                <span class="label-icon" aria-hidden="true">📜</span> TRANSMISSION PAYLOAD / MESSAGE: <span class="required-star">*</span>
+              </label>
+              <textarea id="contactMessage" name="message" rows="5" required="" placeholder="Describe your quest scope, timeline, requirements, or greetings..."></textarea>
+              <span class="field-error-msg" id="messageError" aria-live="polite"></span>
+            </div>
+
+            <!-- High-Contrast Submit Button with Clear Visibility -->
+            <div class="form-actions-row">
+              <button type="submit" class="pixel-btn high-contrast-btn submit-btn" id="contactSubmitBtn">
+                <span class="btn-text">DISPATCH TRANSMISSION</span>
+                <span class="btn-arrow" aria-hidden="true">✉</span>
+              </button>
+              <span class="form-privacy-note">
+                🔒 100% Secure • Integrated with Resend Email API endpoint
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Social Media Links in the Footer (Evenly Spaced & Pixel Art Aesthetic) -->
+    <footer class="pixel-footer" role="contentinfo" aria-label="Portfolio Footer">
+      <div class="footer-inner">
+        <!-- Top Footer Brand Bar -->
+        <div class="footer-brand-row">
+          <div class="footer-title-group">
+            <span class="pixel-star-logo" aria-hidden="true">★</span>
+            <span class="footer-brand-name">YASHWANTH // PORTFOLIO_OS</span>
+            <span class="footer-lvl-pill">LV.99 ARCHITECT</span>
+          </div>
+
+          <button id="backToTopBtn" class="pixel-btn secondary-btn back-to-top" title="Scroll back to spawn point" aria-label="Back to top of page">
+            <span class="btn-arrow" aria-hidden="true">▲</span>
+            <span>BACK TO TOP</span>
+          </button>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Social Media Grid with Pixel Art Icons (Evenly Spaced & Accessible) -->
+        <div class="footer-social-section">
+          <h3 class="social-section-title">FREQUENCY CHANNELS &amp; SOCIAL REALMS</h3>
+          <p class="social-section-desc">Connect with Yashwanth across the metaverse and open-source network:</p>
+
+          <nav class="footer-social-grid" aria-label="Social Media Links">
+            <!-- 1. GitHub -->
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-pixel-card github-card" aria-label="Visit Yashwanth's GitHub Profile (opens in new tab)">
+              <div class="social-icon-wrapper" aria-hidden="true">
+                <!-- Pixel GitHub SVG -->
+                <svg viewBox="0 0 24 24" class="pixel-social-svg">
+                  <rect x="8" y="2" width="8" height="2" fill="currentColor"></rect>
+                  <rect x="5" y="4" width="14" height="2" fill="currentColor"></rect>
+                  <rect x="4" y="6" width="16" height="4" fill="currentColor"></rect>
+                  <rect x="2" y="10" width="20" height="4" fill="currentColor"></rect>
+                  <rect x="4" y="14" width="16" height="4" fill="currentColor"></rect>
+                  <rect x="6" y="18" width="4" height="2" fill="currentColor"></rect>
+                  <rect x="14" y="18" width="4" height="2" fill="currentColor"></rect>
+                  <rect x="4" y="18" width="2" height="4" fill="currentColor"></rect>
+                  <rect x="18" y="18" width="2" height="4" fill="currentColor"></rect>
+                  <!-- Eye Cutouts -->
+                  <rect x="7" y="8" width="2" height="2" fill="var(--bg-card)"></rect>
+                  <rect x="15" y="8" width="2" height="2" fill="var(--bg-card)"></rect>
+                </svg>
+              </div>
+              <span class="social-name">GITHUB</span>
+              <span class="social-tag">@yashwanth</span>
+            </a>
+
+            <!-- 2. LinkedIn -->
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-pixel-card linkedin-card" aria-label="Connect with Yashwanth on LinkedIn (opens in new tab)">
+              <div class="social-icon-wrapper" aria-hidden="true">
+                <!-- Pixel LinkedIn SVG -->
+                <svg viewBox="0 0 24 24" class="pixel-social-svg">
+                  <rect x="3" y="3" width="18" height="2" fill="currentColor"></rect>
+                  <rect x="3" y="5" width="2" height="14" fill="currentColor"></rect>
+                  <rect x="19" y="5" width="2" height="14" fill="currentColor"></rect>
+                  <rect x="3" y="19" width="18" height="2" fill="currentColor"></rect>
+                  <!-- 'in' symbol -->
+                  <rect x="7" y="7" width="2" height="2" fill="currentColor"></rect>
+                  <rect x="7" y="11" width="2" height="6" fill="currentColor"></rect>
+                  <rect x="11" y="11" width="2" height="6" fill="currentColor"></rect>
+                  <rect x="13" y="11" width="4" height="2" fill="currentColor"></rect>
+                  <rect x="15" y="13" width="2" height="4" fill="currentColor"></rect>
+                </svg>
+              </div>
+              <span class="social-name">LINKEDIN</span>
+              <span class="social-tag">/in/yashwanth</span>
+            </a>
+
+            <!-- 3. Twitter / X -->
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-pixel-card twitter-card" aria-label="Follow Yashwanth on X / Twitter (opens in new tab)">
+              <div class="social-icon-wrapper" aria-hidden="true">
+                <!-- Pixel X SVG -->
+                <svg viewBox="0 0 24 24" class="pixel-social-svg">
+                  <rect x="4" y="4" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="17" y="4" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="7" y="7" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="14" y="7" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="9" y="10" width="6" height="4" fill="currentColor"></rect>
+                  <rect x="7" y="14" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="14" y="14" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="4" y="17" width="3" height="3" fill="currentColor"></rect>
+                  <rect x="17" y="17" width="3" height="3" fill="currentColor"></rect>
+                </svg>
+              </div>
+              <span class="social-name">X / TWITTER</span>
+              <span class="social-tag">@yashwanth_dev</span>
+            </a>
+
+            <!-- 4. Discord -->
+            <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="social-pixel-card discord-card" aria-label="Join Yashwanth's Discord Server (opens in new tab)">
+              <div class="social-icon-wrapper" aria-hidden="true">
+                <!-- Pixel Discord SVG -->
+                <svg viewBox="0 0 24 24" class="pixel-social-svg">
+                  <rect x="6" y="5" width="12" height="2" fill="currentColor"></rect>
+                  <rect x="4" y="7" width="16" height="2" fill="currentColor"></rect>
+                  <rect x="3" y="9" width="18" height="6" fill="currentColor"></rect>
+                  <rect x="5" y="15" width="14" height="2" fill="currentColor"></rect>
+                  <rect x="5" y="17" width="3" height="2" fill="currentColor"></rect>
+                  <rect x="16" y="17" width="3" height="2" fill="currentColor"></rect>
+                  <!-- Eyes -->
+                  <rect x="7" y="11" width="3" height="2" fill="var(--bg-card)"></rect>
+                  <rect x="14" y="11" width="3" height="2" fill="var(--bg-card)"></rect>
+                </svg>
+              </div>
+              <span class="social-name">DISCORD</span>
+              <span class="social-tag">Yashwanth#0001</span>
+            </a>
+
+            <!-- 5. Email / Direct Mail -->
+            <a href="mailto:yashwanth@example.com" class="social-pixel-card mail-card" aria-label="Send direct email to Yashwanth">
+              <div class="social-icon-wrapper" aria-hidden="true">
+                <!-- Pixel Mail SVG -->
+                <svg viewBox="0 0 24 24" class="pixel-social-svg">
+                  <rect x="2" y="4" width="20" height="2" fill="currentColor"></rect>
+                  <rect x="2" y="6" width="2" height="12" fill="currentColor"></rect>
+                  <rect x="20" y="6" width="2" height="12" fill="currentColor"></rect>
+                  <rect x="4" y="6" width="2" height="2" fill="currentColor"></rect>
+                  <rect x="18" y="6" width="2" height="2" fill="currentColor"></rect>
+                  <rect x="6" y="8" width="2" height="2" fill="currentColor"></rect>
+                  <rect x="16" y="8" width="2" height="2" fill="currentColor"></rect>
+                  <rect x="8" y="10" width="8" height="2" fill="currentColor"></rect>
+                  <rect x="2" y="18" width="20" height="2" fill="currentColor"></rect>
+                </svg>
+              </div>
+              <span class="social-name">DIRECT EMAIL</span>
+              <span class="social-tag">yashwanth@realm.dev</span>
+            </a>
+          </nav>
+        </div>
+
+        <div class="footer-divider" aria-hidden="true"></div>
+
+        <!-- Bottom Copyright & System Telemetry -->
+        <div class="footer-bottom-row">
+          <p class="copyright-text">
+            © 2026 YASHWANTH • DESIGNED &amp; ENGINEERED WITH 8-BIT PASSION • ALL RIGHTS RESERVED
+          </p>
+          <div class="telemetry-tags">
+            <span class="telemetry-item">STATUS: <strong class="text-green">ONLINE</strong></span>
+            <span class="telemetry-item">VERSION: <strong>2.4.0-PROD</strong></span>
+            <span class="telemetry-item">UPTIME: <strong>99.99%</strong></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="./Pixel Nav &amp; Portfolio Demo _ Yashwanth_files/script.js.download"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
